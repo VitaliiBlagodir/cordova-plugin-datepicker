@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
-           id="de.websector.datepicker"
+           id="com.plugin.datepicker"
       version="0.3.0">
 
     <name>Datepicker</name>
