@@ -1,22 +1,8 @@
-# DatePicker iOS Plugin for using PhoneGap / Cordova 3.0 (iOS 7 beta ready)
+# DatePicker Plugin for Cordova/PhoneGap 3.0 (iOS and Android)
 
 This is a re-write of the iOS DatePicker plugin hosted on [https://github.com/phonegap/phonegap-plugins/tree/master/iOS/DatePicker](https://github.com/phonegap/phonegap-plugins/tree/master/iOS/DatePicker) to run with PhoneGap/Cordova 3.0. 
 
 It includes [more options](#options) and it is ready for iPhone and iPad.
-
-## Screen shots
-
-### iPhone (iOS 6)
-![screen shot iPhone](https://raw.github.com/sectore/phonegap3-ios-datepicker-plugin/master/assets/screenshot.jpg)
-
-### iPhone (iOS 7)
-![screen shot iPhone](https://raw.github.com/sectore/phonegap3-ios-datepicker-plugin/master/assets/screenshot_ios7.jpg)
-
-### iPad (iOS 6)
-![screen shot iPad](https://raw.github.com/sectore/phonegap3-ios-datepicker-plugin/master/assets/screenshot_ipad.jpg)
-
-### iPad (iOS 7)
-![screen shot iPad](https://raw.github.com/sectore/phonegap3-ios-datepicker-plugin/master/assets/screenshot_ipad_ios7.jpg)
 
 ## Installation
 
@@ -27,37 +13,16 @@ Also you will need Xcode v.4.2 or newer to support the feature called ["Automati
 2) Add a plugin to your project using [Cordova CLI](https://github.com/apache/cordova-cli):
 
 ```bash
-cordova plugin add https://github.com/sectore/phonegap3-ios-datepicker-plugin
+cordova plugin add https://github.com/VitaliiBlagodir/cordova-plugin-datepicker
 ```
 
 Or using [PhoneGap CLI](https://github.com/mwbrooks/phonegap-cli):
 
 ```bash
-phonegap local plugin add https://github.com/sectore/phonegap3-ios-datepicker-plugin
+phonegap local plugin add https://github.com/VitaliiBlagodir/cordova-plugin-datepicker
 ```
 
-Or using [plugman CLI](https://github.com/apache/cordova-plugman#command-line-usage):
-
-```bash
-plugman --platform ios --project ./platforms/ios --plugin https://github.com/sectore/phonegap3-ios-datepicker-plugin
-```
-
-
-3a) Register plugin within `config.xml` of your app
-
-```xml
-<feature name="DatePicker">
-    <param name="ios-package" value="DatePicker"/>
-</feature>
-```
-
-3b) If you are using [PhoneGap build service](https://build.phonegap.com/) add to `config.xml`
-
-```xml
-<gap:plugin name="de.websector.datepicker" />
-```
-
-4) The `clobber` definition of the plugin is called `datePicker`. So you can reference to the plugin from anywhere in your code.
+3) The `clobber` definition of the plugin is called `datePicker`. So you can reference to the plugin from anywhere in your code.
 
 Example:
 
@@ -173,9 +138,3 @@ Default: `'0'`
 
 ## Author of migration to PhoneGap 3.0
 Jens Krause // [WEBSECTOR.DE](http://www.websector.de)
-
-
-
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/sectore/phonegap3-ios-datepicker-plugin/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
