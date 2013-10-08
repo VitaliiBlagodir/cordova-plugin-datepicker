@@ -16,6 +16,10 @@
                 <param name="android-package" value="com.plugin.datepicker.DatePickerPlugin"/>
             </feature>
         </config-file>
+		
+        <js-module src="www/android/DatePicker.js" name="DatePicker">
+            <clobbers target="datePicker" />
+        </js-module>
 
         <source-file src="src/android/DatePickerPlugin.java" target-dir="src/com/plugin/datepicker" />
     </platform>
@@ -33,8 +37,8 @@
             <clobbers target="datePicker" />
         </js-module>
 
-	   <header-file src="src/ios/DatePicker.h" />
-	   <source-file src="src/ios/DatePicker.m" />
+	    <header-file src="src/ios/DatePicker.h" />
+	    <source-file src="src/ios/DatePicker.m" />
 
     </platform>
 

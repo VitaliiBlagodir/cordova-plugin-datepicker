@@ -42,7 +42,7 @@ public class DatePickerPlugin extends CordovaPlugin {
 	private final String pluginName = "DatePickerPlugin";
 
 	@Override
-	public boolean execute(final String action, final JSONArray data, CallbackContext callbackContext) {
+	public boolean execute(final String action, final JSONArray data, final CallbackContext callbackContext) {
 		Log.d(pluginName, "DatePicker called with options: " + data);
 		boolean result = false;
 
@@ -52,7 +52,7 @@ public class DatePickerPlugin extends CordovaPlugin {
 		return result;
 	}
 
-	public synchronized void show(final JSONArray data, CallbackContext callbackContext) {
+	public synchronized void show(final JSONArray data, final CallbackContext callbackContext) {
 		final DatePickerPlugin datePickerPlugin = this;
 		final Context currentCtx = cordova.getActivity();
 		final Calendar c = Calendar.getInstance();
