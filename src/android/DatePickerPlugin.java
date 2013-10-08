@@ -106,7 +106,6 @@ public class DatePickerPlugin extends CordovaPlugin {
 							@Override
 							public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
 								// TODO Auto-generated method stub
-								//datePickerPlugin.success("", callBackId);
 								callbackContext.success("");
 								return false;
 							}
@@ -137,7 +136,6 @@ public class DatePickerPlugin extends CordovaPlugin {
 						dateDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
 				            @Override
 				            public void onClick(DialogInterface dialog, int which) {
-				            	//datePickerPlugin.success("", callBackId);
 								callbackContext.success("cancel");
 				            }
 				        });
@@ -145,7 +143,6 @@ public class DatePickerPlugin extends CordovaPlugin {
 							@Override
 							public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
 								// TODO Auto-generated method stub
-								//datePickerPlugin.success("", callBackId);
 								callbackContext.success("");
 								return false;
 							}
@@ -226,7 +223,6 @@ public class DatePickerPlugin extends CordovaPlugin {
 		@Override
 		public void onDateSet(final DatePicker view, final int year, final int monthOfYear, final int dayOfMonth) {
 			String returnDate = year + "/" + (monthOfYear + 1) + "/" + dayOfMonth;
-			//datePickerPlugin.success(new PluginResult(PluginResult.Status.OK, returnDate), callbackContext);
 			callbackContext.success(returnDate);
 		}
 	}
@@ -249,8 +245,6 @@ public class DatePickerPlugin extends CordovaPlugin {
 			Date date = new Date();
 			date.setHours(hourOfDay);
 			date.setMinutes(minute);
-
-			//datePickerPlugin.success(new PluginResult(PluginResult.Status.OK, date.toLocaleString()), callBackId);
 
 			callbackContext.success(date.toLocaleString());
 		}
