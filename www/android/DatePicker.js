@@ -8,7 +8,7 @@ var exec = require('cordova/exec');
  * Constructor
  */
 function DatePicker() {
-    this._callback;
+    //this._callback;
 }
 
 	/**
@@ -30,12 +30,16 @@ function DatePicker() {
 			if (typeof options[key] !== "undefined")
 				defaults[key] = options[key];
 		}
-		this._callback = cb;
+		//this._callback = cb;
 
-		exec(null, 
+		var callback = function(message) {
+			cb(new Date(message));
+		}
+		
+		exec(callback, 
 		  null, 
 		  "DatePickerPlugin", 
-		  "show",
+		  defaults.mode,
 		  [defaults]
 		);
 		
