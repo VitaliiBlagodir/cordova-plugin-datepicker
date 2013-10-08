@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+           id="de.websector.datepicker"
+      version="0.3.0">
+
+    <name>Datepicker</name>
+    <description>Cordova Datepicker Plugin</description>
+    <license>MIT</license>
+    <keywords>cordova,datepicker,ios,android</keywords>
+
+    <!-- android -->
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="DatePicker">
+                <param name="android-package" value="com.plugin.datepicker.DatePicker"/>
+            </feature>
+        </config-file>
+
+        <source-file src="src/android/DatePicker.java" target-dir="src/com/plugin/datepicker" />
+    </platform>
+	
+    <!-- ios -->
+    <platform name="ios">
+
+        <config-file target="config.xml" parent="/*">
+		<feature name="DatePicker">
+			<param name="ios-package" value="DatePicker"/>
+		</feature>
+        </config-file>
+
+        <js-module src="www/ios/DatePicker.js" name="DatePicker">
+            <clobbers target="datePicker" />
+        </js-module>
+
+	   <header-file src="src/ios/DatePicker.h" />
+	   <source-file src="src/ios/DatePicker.m" />
+
+    </platform>
+
+</plugin>
