@@ -43,12 +43,5 @@ function DatePicker() {
 		
 	};
 
-	DatePicker.prototype._dateSelected = function(date) {
-		var d = new Date(parseFloat(date) * 1000);
-		if (this._callback)
-			this._callback(d);
-	};
-
-
 var datePicker = new DatePicker();
 module.exports = datePicker

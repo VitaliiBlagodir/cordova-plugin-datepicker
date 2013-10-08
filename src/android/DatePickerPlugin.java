@@ -138,7 +138,7 @@ public class DatePickerPlugin extends CordovaPlugin {
 				            @Override
 				            public void onClick(DialogInterface dialog, int which) {
 				            	//datePickerPlugin.success("", callBackId);
-								callbackContext.success("");
+								callbackContext.success("cancel");
 				            }
 				        });
 						dateDialog.setOnKeyListener(new Dialog.OnKeyListener() {
