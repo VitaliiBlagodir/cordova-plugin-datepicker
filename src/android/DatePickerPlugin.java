@@ -8,6 +8,7 @@ package com.plugin.datepicker;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.text.SimpleDateFormat;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -242,11 +243,12 @@ public class DatePickerPlugin extends CordovaPlugin {
 		 */
 		@Override
 		public void onTimeSet(final TimePicker view, final int hourOfDay, final int minute) {
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd hh:mm:ss");
 			Date date = new Date();
 			date.setHours(hourOfDay);
 			date.setMinutes(minute);
 
-			callbackContext.success(date.toLocaleString());
+			callbackContext.success(sdf.format(date));
 		}
 	}
 
