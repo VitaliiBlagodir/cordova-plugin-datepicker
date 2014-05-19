@@ -8,6 +8,7 @@ package com.plugin.datepicker;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.TimeZone;
 import java.text.SimpleDateFormat;
 
 import org.json.JSONArray;
@@ -242,13 +243,16 @@ public class DatePickerPlugin extends CordovaPlugin {
 		 * time picker.
 		 */
 		@Override
-		public void onTimeSet(final TimePicker view, final int hourOfDay, final int minute) {
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-			Date date = new Date();
-			date.setHours(hourOfDay);
-			date.setMinutes(minute);
+		public void onTimeSet(final TimePicker view, final int hourOfDay, final int minute) {			
+			Calendar calendar = Calendar.getInstance(TimeZone.getDefault());
+			calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
+			calendar.set(Calendar.MINUTE, minute);
 
-			callbackContext.success(sdf.format(date));
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ"); 
+			sdf.setTimeZone(TimeZone.getTimeZone("GMT"));  
+			String toReturn = sdf.format(calendar.getTime());
+
+			callbackContext.success(toReturn);
 		}
 	}
 
