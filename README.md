@@ -40,9 +40,9 @@ The mode of the date picker.
 
 Type: String
 
-Values: `date` | `time` | `datetime`
+Values: `date` | `time` | `datetime` (iOS only)
 
-Default: `datetime`
+Default: `date`
 
 ### date - iOS, Android
 Selected date.

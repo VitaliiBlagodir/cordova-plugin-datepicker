@@ -3,7 +3,6 @@
  * Reused and ported to Android plugin by Daniel van 't Oever
  */
 
-// var exec = require('cordova/exec');
 /**
  * Constructor
  */
@@ -16,52 +15,48 @@ function DatePicker() {
  */
 DatePicker.prototype.show = function(options, cb) {
   
-  if (options.date) {
-    options.date = (options.date.getMonth() + 1) + "/" + 
-                   (options.date.getDate()) + "/" + 
-                   (options.date.getFullYear()) + "/" + 
-                   (options.date.getHours()) + "/" + 
-                   (options.date.getMinutes());
-  }
+	if (options.date) {
+		options.date = (options.date.getMonth() + 1) + "/" + 
+					   (options.date.getDate()) + "/" + 
+					   (options.date.getFullYear()) + "/" + 
+					   (options.date.getHours()) + "/" + 
+					   (options.date.getMinutes());
+	}
 
-  var defaults = {
-    mode : '',
-    date : '',
-    minDate: 0,
-    maxDate: 0
-  };
+	var defaults = {
+		mode : 'date',
+		date : '',
+		minDate: 0,
+		maxDate: 0
+	};
 
-  for (var key in defaults) {
-    if (typeof options[key] !== "undefined") {
-      defaults[key] = options[key];
-    }
-  }
+	for (var key in defaults) {
+		if (typeof options[key] !== "undefined") {
+			defaults[key] = options[key];
+		}
+	}
 
-  //this._callback = cb;
+	//this._callback = cb;
 
-  var callback = function(message) {
-    cb(new Date(message));
-  }
+	var callback = function(message) {
+		cb(new Date(message));
+	}
   
-  cordova.exec(callback, 
-    null, 
-    "DatePickerPlugin", 
-    defaults.mode,
-    [defaults]
-  );
-  
-  //return gap.exec(cb, failureCallback, 'DatePickerPlugin', defaults.mode, new Array(defaults));
+	cordova.exec(callback, 
+		null, 
+		"DatePickerPlugin", 
+		defaults.mode,
+		[defaults]
+	);
 };
 
-//-------------------------------------------------------------------
+var datePicker = new DatePicker();
+module.exports = datePicker;
 
-if(!window.plugins) {
+// Make plugin work under window.plugins
+if (!window.plugins) {
     window.plugins = {};
 }
 if (!window.plugins.datePicker) {
-    window.plugins.datePicker = new DatePicker();
-}
-
-if (module.exports) {
-  module.exports = window.plugins.datePicker;
+    window.plugins.datePicker = datePicker;
 }

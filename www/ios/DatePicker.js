@@ -57,7 +57,7 @@ DatePicker.prototype.show = function(options, cb) {
     }
 
     var defaults = {
-        mode: 'datetime',
+        mode: 'date',
         date: new Date(),
         allowOldDates: true,
         allowFutureDates: true,
@@ -92,4 +92,12 @@ DatePicker.prototype._dateSelected = function(date) {
 }
 
 var datePicker = new DatePicker();
-module.exports = datePicker
+module.exports = datePicker;
+
+// Make plugin work under window.plugins
+if (!window.plugins) {
+    window.plugins = {};
+}
+if (!window.plugins.datePicker) {
+    window.plugins.datePicker = datePicker;
+}
