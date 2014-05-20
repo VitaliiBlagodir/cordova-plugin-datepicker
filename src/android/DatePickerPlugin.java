@@ -108,7 +108,7 @@ public class DatePickerPlugin extends CordovaPlugin {
 							@Override
 							public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
 								// TODO Auto-generated method stub
-								callbackContext.success("");
+								//callbackContext.success("");
 								return false;
 							}
 						});
@@ -145,7 +145,7 @@ public class DatePickerPlugin extends CordovaPlugin {
 							@Override
 							public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
 								// TODO Auto-generated method stub
-								callbackContext.success("");
+								//callbackContext.success("");
 								return false;
 							}
 						});
