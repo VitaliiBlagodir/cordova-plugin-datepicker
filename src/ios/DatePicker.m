@@ -108,7 +108,8 @@
                                                         destructiveButtonTitle:nil 
                                                         otherButtonTitles:nil];
 
-  [actionSheet setActionSheetStyle:UIActionSheetStyleBlackTranslucent];
+  UIColor *color = [UIColor colorWithWhite:1.0 alpha:0.95];
+  [actionSheet setBackgroundColor:color];
   // date picker
   CGRect frame = CGRectMake(0, 40, 0, 0);
   if(!self.datePicker){
