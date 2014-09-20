@@ -16,11 +16,11 @@
 #ifndef k_DATEPICKER_DATETIME_FORMAT
 #define k_DATEPICKER_DATETIME_FORMAT @"yyyy-MM-dd'T'HH:mm:ss'Z'"
 #endif
-
+UIDatePicker *myPicker;
 @interface DatePicker : CDVPlugin <UIActionSheetDelegate, UIPopoverControllerDelegate> {
     
 }
-
+@property (nonatomic, strong) UIView *modalView;
 - (void)show:(CDVInvokedUrlCommand*)command;
 
 @end
