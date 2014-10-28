@@ -196,6 +196,7 @@
   BOOL allowFutureDates = ([[options objectForKey:@"allowFutureDates"] intValue] == 0) ? NO : YES;
   NSString *minDateString = [options objectForKey:@"minDate"];
   NSString *maxDateString = [options objectForKey:@"maxDate"];
+  NSInteger minuteInterval = [options objectForKey:@"minuteInterval"];
   
   if (!allowOldDates) {
     self.datePicker.minimumDate = [NSDate date];
@@ -222,6 +223,10 @@
     self.datePicker.datePickerMode = UIDatePickerModeTime;
   } else {
     self.datePicker.datePickerMode = UIDatePickerModeDateAndTime;
+  }
+
+  if (minuteInterval) {
+    self.datePicker.minuteInterval = minuteInterval;
   }
 }
 
