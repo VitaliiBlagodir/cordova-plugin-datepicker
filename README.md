@@ -125,6 +125,13 @@ Type: String
 
 Default: `0`
 
+### minuteInterval - iOS
+Interval between options in the minute section of the date picker.
+
+Type: Integer
+
+Default: `1`
+
 ## Requirements
 - PhoneGap 3.0 or newer / Cordova 3.0 or newer
 - Android 2.3.1 or newer / iOS 5 or newer

@@ -68,7 +68,8 @@ DatePicker.prototype.show = function(options, cb) {
         cancelButtonLabel: 'Cancel',
         cancelButtonColor: '#000000',
         x: '0',
-        y: '0'
+        y: '0',
+        minuteInterval: 1
     };
 
     for (var key in defaults) {
