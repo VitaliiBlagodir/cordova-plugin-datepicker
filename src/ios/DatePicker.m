@@ -199,7 +199,10 @@
   NSString *minuteIntervalString = [options objectForKey:@"minuteInterval"];
   NSInteger minuteInterval = [minuteIntervalString integerValue];
   
-  if (!allowOldDates) {
+  if (allowOldDates) {
+    self.datePicker.minimumDate = nil;
+  }
+  else {
     self.datePicker.minimumDate = [NSDate date];
   }
   
@@ -207,7 +210,10 @@
     self.datePicker.minimumDate = [formatter dateFromString:minDateString];
   }
   
-  if (!allowFutureDates) {
+  if (allowFutureDates) {
+    self.datePicker.maximumDate = nil;
+  }
+  else {
     self.datePicker.maximumDate = [NSDate date];
   }
   
