@@ -126,6 +126,7 @@
 }
   
 - (IBAction)cancelAction:(id)sender {
+  [self jsCancel];
   [self hide];
 }
 
