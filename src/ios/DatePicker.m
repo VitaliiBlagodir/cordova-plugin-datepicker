@@ -136,6 +136,12 @@
 
 #pragma mark - JS API
 
+- (void)jsCancel {
+  NSLog(@"JS Cancel is going to be executed");
+  NSString* jsCallback = [NSString stringWithFormat:@"datePicker._dateSelectionCanceled();"];
+  [super writeJavascript:jsCallback];
+}
+
 - (void)jsDateSelected {
   NSTimeInterval seconds = [self.datePicker.date timeIntervalSince1970];
   NSString* jsCallback = [NSString stringWithFormat:@"datePicker._dateSelected(\"%f\");", seconds];
