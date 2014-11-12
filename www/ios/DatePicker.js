@@ -92,6 +92,13 @@ DatePicker.prototype._dateSelected = function(date) {
         this._callback(d);
 }
 
+DatePicker.prototype._dateSelectionCanceled = function() {
+    if (this._callback)
+        this._callback();
+}
+
+
+
 var datePicker = new DatePicker();
 module.exports = datePicker;
 
