@@ -14,12 +14,12 @@ function DatePicker() {
  * show - true to show the ad, false to hide the ad
  */
 DatePicker.prototype.show = function(options, cb) {
-  
+
 	if (options.date) {
-		options.date = (options.date.getMonth() + 1) + "/" + 
-					   (options.date.getDate()) + "/" + 
-					   (options.date.getFullYear()) + "/" + 
-					   (options.date.getHours()) + "/" + 
+		options.date = (options.date.getMonth() + 1) + "/" +
+					   (options.date.getDate()) + "/" +
+					   (options.date.getFullYear()) + "/" +
+					   (options.date.getHours()) + "/" +
 					   (options.date.getMinutes());
 	}
 
@@ -43,11 +43,14 @@ DatePicker.prototype.show = function(options, cb) {
 		if(isNaN(timestamp) == false) {
 			cb(new Date(message));
 		}
+        else {
+            cb();
+        }
 	}
-  
-	cordova.exec(callback, 
-		null, 
-		"DatePickerPlugin", 
+
+	cordova.exec(callback,
+		null,
+		"DatePickerPlugin",
 		defaults.mode,
 		[defaults]
 	);
