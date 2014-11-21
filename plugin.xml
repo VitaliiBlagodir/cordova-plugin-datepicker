@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
-        id="com.plugin.datepicker"
-        version="0.4.0">
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    id="com.plugin.datepicker"
+    version="0.5.0">
 
     <name>DatePicker</name>
-	
-    <description>Cordova DatePicker Plugin for iOS and Android</description>
-	
+
+    <description>Cordova/PhoneGap DatePicker Plugin for iOS and Android</description>
+
     <license>MIT</license>
-	
-    <keywords>cordova,datepicker,ios,ios7,ios8,android</keywords>
+
+    <keywords>cordova,phonegap,datepicker,android,ios,ios7,ios8</keywords>
+
+    <repo>https://github.com/VitaliiBlagodir/cordova-plugin-datepicker.git</repo>
 
     <!-- android -->
     <platform name="android">
@@ -19,31 +22,29 @@
                 <param name="android-package" value="com.plugin.datepicker.DatePickerPlugin"/>
             </feature>
         </config-file>
-		
+
         <js-module src="www/android/DatePicker.js" name="DatePicker">
             <clobbers target="datePicker" />
         </js-module>
 
         <source-file src="src/android/DatePickerPlugin.java" target-dir="src/com/plugin/datepicker" />
     </platform>
-	
+
     <!-- ios -->
     <platform name="ios">
-
         <config-file target="config.xml" parent="/*">
-		<feature name="DatePicker">
-			<param name="ios-package" value="DatePicker"/>
-		</feature>
+        <feature name="DatePicker">
+            <param name="ios-package" value="DatePicker"/>
+        </feature>
         </config-file>
 
         <js-module src="www/ios/DatePicker.js" name="DatePicker">
             <clobbers target="datePicker" />
         </js-module>
 
-	    <header-file src="src/ios/DatePicker.h" />
-	    <source-file src="src/ios/DatePicker.m" />
-		<resource-file src="src/ios/DatePicker.xib" />
-
+        <header-file src="src/ios/DatePicker.h" />
+        <source-file src="src/ios/DatePicker.m" />
+        <resource-file src="src/ios/DatePicker.xib" />
     </platform>
 
 </plugin>
