@@ -166,9 +166,10 @@
   UIView *datePickerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, pickerViewWidth, pickerViewHeight)];
   
   CGRect frame = CGRectMake(0, 0, 0, 0);
-  if(!self.datePicker){
-    self.datePicker = [self createDatePicker:options frame:frame];
-    [self.datePicker addTarget:self action:@selector(dateChangedAction:) forControlEvents:UIControlEventValueChanged];
+  // in iOS8, UIDatePicker couldn't be shared in multi UIViews, it will cause crash. so   create new UIDatePicker instance every time
+  if (! self.datePicker || [[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0){
+      self.datePicker = [self createDatePicker:options frame:frame];
+      [self.datePicker addTarget:self action:@selector(dateChangedAction:) forControlEvents:UIControlEventValueChanged];
   }
   [self updateDatePicker:options];
   [datePickerView addSubview:self.datePicker];
