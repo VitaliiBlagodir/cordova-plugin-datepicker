@@ -139,15 +139,16 @@
 
 - (void)jsCancel {
   NSLog(@"JS Cancel is going to be executed");
-  NSString* jsCallback = [NSString stringWithFormat:@"datePicker._dateSelectionCanceled();"];
-  [super writeJavascript:jsCallback];
+  NSString *jsCallback = @"datePicker._dateSelectionCanceled();";
+    
+  [self.commandDelegate evalJs:jsCallback];
 }
 
 - (void)jsDateSelected {
   NSTimeInterval seconds = [self.datePicker.date timeIntervalSince1970];
-  NSString* jsCallback = [NSString stringWithFormat:@"datePicker._dateSelected(\"%f\");", seconds];
-  //NSLog(jsCallback);
-  [super writeJavascript:jsCallback];
+  NSString *jsCallback = [NSString stringWithFormat:@"datePicker._dateSelected(\"%f\");", seconds];
+    
+  [self.commandDelegate evalJs:jsCallback];
 }
 
 
