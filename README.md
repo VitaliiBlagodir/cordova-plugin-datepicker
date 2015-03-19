@@ -58,7 +58,7 @@ Type: Date | empty String
 
 Default: `(empty String)`
 
-minDate is a Date object for iOS and an integer for Android, so you need to account for that when using the plugin. For example, with Ionic Framework, do something like this:
+minDate is a Date object for iOS and an integer for Android, so you need to account for that when using the plugin.
 
 
 ### maxDate - iOS, Android
