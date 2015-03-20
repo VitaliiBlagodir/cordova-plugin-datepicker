@@ -24,7 +24,7 @@ DatePicker.prototype.show = function(options, cb) {
 	}
 
 	if (options.is24HourView) {
-			options.is24HourView = is24HourView;
+			options.is24HourView = options.is24HourView;
 	}
 
 	var defaults = {
