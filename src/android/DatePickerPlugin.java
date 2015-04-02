@@ -59,10 +59,11 @@ public class DatePickerPlugin extends CordovaPlugin {
 		final Context currentCtx = cordova.getActivity();
 		final Calendar c = Calendar.getInstance();
 		final Runnable runnable;
-
 		String action = "date";
+		String clearText = "Clear";
+	
 		long minDateLong = 0, maxDateLong = 0;
-
+		
 		int month = -1, day = -1, year = -1, hour = -1, min = -1;
 		try {
 			JSONObject obj = data.getJSONObject(0);
@@ -80,6 +81,8 @@ public class DatePickerPlugin extends CordovaPlugin {
 			minDateLong = obj.getLong("minDate");
 			maxDateLong = obj.getLong("maxDate");
 
+	
+
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
@@ -93,6 +96,9 @@ public class DatePickerPlugin extends CordovaPlugin {
 
 		final long minDate = minDateLong;
 		final long maxDate = maxDateLong;
+		final String clearButtonText = clearText;
+
+	
 
 		if (ACTION_TIME.equalsIgnoreCase(action)) {
 			runnable = new Runnable() {
@@ -104,6 +110,16 @@ public class DatePickerPlugin extends CordovaPlugin {
 					if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
 						timeDialog.setCancelable(true);
 						timeDialog.setCanceledOnTouchOutside(false);
+						if (!clearButtonText.isEmpty()){
+							
+	                        timeDialog.setButton(TimePickerDialog.BUTTON_NEUTRAL, clearButtonText, new DialogInterface.OnClickListener() {
+	                        	@Override
+	                            public void onClick(DialogInterface dialog, int which) {
+	                                // TODO Auto-generated method stub
+	                                callbackContext.success("-1");                                
+	                            }
+	                        });
+                        }
 						timeDialog.setButton(DialogInterface.BUTTON_NEGATIVE, currentCtx.getString(android.R.string.cancel), new DialogInterface.OnClickListener() {
 							@Override
 							public void onClick(DialogInterface dialog, int which) {

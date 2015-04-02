@@ -27,7 +27,8 @@ DatePicker.prototype.show = function(options, cb) {
 		mode : 'date',
 		date : '',
 		minDate: 0,
-		maxDate: 0
+		maxDate: 0,
+		clearText: 'Clear'
 	};
 
 	for (var key in defaults) {
@@ -39,13 +40,17 @@ DatePicker.prototype.show = function(options, cb) {
 	//this._callback = cb;
 
 	var callback = function(message) {
-		var timestamp = Date.parse(message);
-		if(isNaN(timestamp) == false) {
-			cb(new Date(message));
-		}
-        else {
-            cb();
-        }
+		if(message == -1){
+			cb(message);
+		} else {
+			var timestamp = Date.parse(message);
+			if(isNaN(timestamp) == false) {
+				cb(new Date(message));
+			}
+	        else {
+	            cb();
+	        }
+    	}
 	}
 
 	cordova.exec(callback,
