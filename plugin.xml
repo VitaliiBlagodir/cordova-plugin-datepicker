@@ -46,5 +46,15 @@
         <source-file src="src/ios/DatePicker.m" />
         <resource-file src="src/ios/DatePicker.xib" />
     </platform>
+	
+	<!-- windows -->
+    <platform name="windows">		
+        <js-module src="www/windows/DatePicker.js" name="DatePicker">
+            <clobbers target="datePicker" />
+        </js-module>
+        <js-module src="src/windows/DatePickerProxy.js" name="DatePickerProxy">
+            <merges target="" />
+        </js-module>
+    </platform>
 
 </plugin>
