@@ -1,6 +1,6 @@
-# DatePicker Plugin for Cordova/PhoneGap 3.0 (iOS and Android)
+# DatePicker Plugin for Cordova/PhoneGap 4.0 (iOS and Android and Windows)
 
-This is a combined version of DatePicker iOS and Android plugin for Cordova/Phonegap 3.0.
+This is a combined version of DatePicker iOS and Android and Windows plugin for Cordova/Phonegap 4.0.
 - Original iOS version: https://github.com/sectore/phonegap3-ios-datepicker-plugin
 
 - Original Android version: https://github.com/bikasv/cordova-android-plugins/tree/master/datepicker
@@ -35,23 +35,23 @@ datePicker.show(options, function(date){
 
 ## Options
 
-### mode - iOS, Android
+### mode - iOS, Android, Windows
 The mode of the date picker.
 
 Type: String
 
-Values: `date` | `time` | `datetime` (iOS only)
+Values: `date` | `time` | `datetime` (iOS, Windows only)
 
 Default: `date`
 
-### date - iOS, Android
+### date - iOS, Android, Windows
 Selected date.
 
 Type: String
 
 Default: `new Date()`
 
-### minDate - iOS, Android
+### minDate - iOS, Android, Windows
 Minimum date.
 
 Type: Date | empty String
@@ -61,7 +61,7 @@ Default: `(empty String)`
 minDate is a Date object for iOS and an integer for Android, so you need to account for that when using the plugin.
 
 
-### maxDate - iOS, Android
+### maxDate - iOS, Android, Windows
 Maximum date.
 
 Type: Date | empty String
