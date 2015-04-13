@@ -3,15 +3,15 @@
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
     xmlns:android="http://schemas.android.com/apk/res/android"
     id="com.plugin.datepicker"
-    version="0.5.1">
+    version="0.6.0">
 
     <name>DatePicker</name>
 
-    <description>Cordova/PhoneGap DatePicker Plugin for iOS and Android</description>
+    <description>Cordova/PhoneGap DatePicker Plugin for iOS, Android and Windows Phone</description>
 
     <license>MIT</license>
 
-    <keywords>cordova,phonegap,datepicker,android,ios,ios7,ios8</keywords>
+    <keywords>cordova,phonegap,datepicker,android,ios,ios7,ios8,wp</keywords>
 
     <repo>https://github.com/VitaliiBlagodir/cordova-plugin-datepicker.git</repo>
 
@@ -47,7 +47,7 @@
         <resource-file src="src/ios/DatePicker.xib" />
     </platform>
 	
-	<!-- windows -->
+    <!-- windows -->
     <platform name="windows">		
         <js-module src="www/windows/DatePicker.js" name="DatePicker">
             <clobbers target="datePicker" />
