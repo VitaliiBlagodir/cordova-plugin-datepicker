@@ -57,6 +57,8 @@
   CGFloat width;
   CGFloat height;
   
+  [self.datePickerContainer removeFromSuperview];
+  
   if(UIInterfaceOrientationIsLandscape(deviceOrientation)){
     width = self.webView.superview.frame.size.height;
     height= self.webView.superview.frame.size.width;
