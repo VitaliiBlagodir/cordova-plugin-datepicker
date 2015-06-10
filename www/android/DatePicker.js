@@ -28,7 +28,11 @@ DatePicker.prototype.show = function(options, cb) {
 		date : '',
 		minDate: 0,
 		maxDate: 0,
-		clearText: 'Clear'
+		cancelText: '',
+		okText: '',
+		todayText: '',
+		nowText: '',
+		is24Hour: false
 	};
 
 	for (var key in defaults) {
@@ -40,9 +44,7 @@ DatePicker.prototype.show = function(options, cb) {
 	//this._callback = cb;
 
 	var callback = function(message) {
-		if(message == -1){
-			cb(message);
-		} else {
+		if(message != 'error'){
 			var timestamp = Date.parse(message);
 			if(isNaN(timestamp) == false) {
 				cb(new Date(message));
@@ -50,6 +52,8 @@ DatePicker.prototype.show = function(options, cb) {
 	        else {
 	            cb();
 	        }
+		} else {
+			// TODO error popup?
     	}
 	}
 
