@@ -5,6 +5,20 @@ This is a combined version of DatePicker iOS and Android and Windows plugin for 
 
 - Original Android version: https://github.com/bikasv/cordova-android-plugins/tree/master/datepicker
 
+New in 0.8.0 (Android Only):
+- Android code refactored
+
+- Option datetime added (default if mode is unknown), opening a new time dialog after setting the date
+
+- Options okText and cancelText to define the labels for POSITIVE and NEGATIVE buttons
+
+- Option todayText to set the label of a button that selects current date (date and datetime)
+
+- Option nowText to set the label of a button that selects current time (time and datetime)
+
+- Option is24Hour added
+
+
 ## Installation
 
 1) Make sure that you have [Node](http://nodejs.org/) and [Cordova CLI](https://github.com/apache/cordova-cli) or [PhoneGap's CLI](https://github.com/mwbrooks/phonegap-cli) installed on your machine.
@@ -12,12 +26,12 @@ This is a combined version of DatePicker iOS and Android and Windows plugin for 
 2) Add a plugin to your project using Cordova CLI:
 
 ```bash
-cordova plugin add https://github.com/VitaliiBlagodir/cordova-plugin-datepicker
+cordova plugin add cordova-plugin-datepicker
 ```
 Or using PhoneGap CLI:
 
 ```bash
-phonegap local plugin add https://github.com/VitaliiBlagodir/cordova-plugin-datepicker
+phonegap local plugin add cordova-plugin-datepicker
 ```
 
 ## Usage
@@ -60,13 +74,49 @@ Default: `(empty String)`
 
 minDate is a Date object for iOS and an integer for Android, so you need to account for that when using the plugin.
 
-
 ### maxDate - iOS, Android, Windows
 Maximum date.
 
 Type: Date | empty String
 
 Default: `(empty String)` 
+
+### okText - Android
+Label of BUTTON_POSITIVE (done button). If empty, uses android.R.string.ok.
+
+Type: String | empty String
+
+Default: `(empty String)` 
+
+### cancelText - Android
+Label of BUTTON_NEGATIVE (cancel button). If empty, uses android.R.string.cancel.
+
+Type: String | empty String
+
+Default: `(empty String)` 
+
+### todayText - Android
+Label of today button. If empty, doesn't show the option to select current date.
+
+Type: String | empty String
+
+Default: `(empty String)` 
+
+### nowText - Android
+Label of now button. If empty, doesn't show the option to select current time.
+
+Type: String | empty String
+
+Default: `(empty String)` 
+
+### is24Hour - Android
+Shows time dialog in 24 hours format.
+
+Type: Boolean
+
+Values: `true` | `false`
+
+Default: `false`
 
 ### allowOldDates - iOS
 Shows or hide dates earlier then selected date.
