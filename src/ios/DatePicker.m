@@ -52,18 +52,21 @@
   [self updateCancelButton:options];
   [self updateDoneButton:options];
   
-  UIDeviceOrientation deviceOrientation = [UIDevice currentDevice].orientation;
+  UIInterfaceOrientation deviceOrientation = [UIApplication sharedApplication].statusBarOrientation;
   
   CGFloat width;
   CGFloat height;
   
   if(UIInterfaceOrientationIsLandscape(deviceOrientation)){
-    width = self.webView.superview.frame.size.height;
-    height= self.webView.superview.frame.size.width;
+    width = self.webView.superview.frame.size.width;
+    height= self.webView.superview.frame.size.height;
   } else {
     width = self.webView.superview.frame.size.width;
     height= self.webView.superview.frame.size.height;
   }
+
+  NSLog(@"%.2f", width);
+  NSLog(@"%.2f", height);
 
   self.datePickerContainer.frame = CGRectMake(0, 0, width, height);
   
