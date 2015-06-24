@@ -46,6 +46,8 @@
 - (BOOL)showForPhone:(NSMutableDictionary *)options {
   if(!self.datePickerContainer){
     [[NSBundle mainBundle] loadNibNamed:@"DatePicker" owner:self options:nil];
+  } else {
+      self.datePickerContainer.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.4];
   }
   
   [self updateDatePicker:options];
