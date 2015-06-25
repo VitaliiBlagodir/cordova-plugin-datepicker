@@ -177,6 +177,7 @@ public class DatePickerPlugin extends CordovaPlugin {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 				canceled = true;
+				callbackContext.error(RESULT_CANCEL);
             }
         });
 		String labelOk = jsonDate.okText.isEmpty() ? currentCtx.getString(android.R.string.ok) : jsonDate.okText;
