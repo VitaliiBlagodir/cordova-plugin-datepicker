@@ -13,7 +13,7 @@ function DatePicker() {
 /**
  * show - true to show the ad, false to hide the ad
  */
-DatePicker.prototype.show = function(options, cb) {
+DatePicker.prototype.show = function(options, cb, errCb) {
 
 	if (options.date) {
 		options.date = (options.date.getMonth() + 1) + "/" +
@@ -57,8 +57,14 @@ DatePicker.prototype.show = function(options, cb) {
     	}
 	}
 
+	var errCallback = function(message) {
+		if (typeof errCb === 'function') {
+			errCb(message);
+		}
+	}
+
 	cordova.exec(callback,
-		null,
+		errCallback,
 		"DatePickerPlugin",
 		defaults.mode,
 		[defaults]
