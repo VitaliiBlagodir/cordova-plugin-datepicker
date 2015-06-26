@@ -44,13 +44,19 @@ phonegap local plugin add cordova-plugin-datepicker
 
 ```js
 var options = {
-  date: new Date(),
-  mode: 'date'
+    date: new Date(),
+    mode: 'date'
 };
 
-datePicker.show(options, function(date){
-  alert("date result " + date);  
-});
+function onSuccess(date) {
+    alert('Selected date: ' + date);
+}
+
+function onError(error) { // Android only
+    alert('Error: ' + error);
+}
+
+datePicker.show(options, onSuccess, onError);
 ```
 
 ## Options
@@ -192,18 +198,6 @@ Type: Integer
 Default: `1`
 
 ## Requirements
-- PhoneGap 3.0 or newer / Cordova 3.0 or newer
-- Android 2.3.1 or newer / iOS 5 or newer
-
-## Example
-
-```js
-var options = {
-  date: new Date(),
-  mode: 'date'
-};
-
-datePicker.show(options, function(date){
-  alert("date result " + date);  
-});
-```
+- Cordova 3.0+
+- iOS 6.0+
+- Android 2.3+
