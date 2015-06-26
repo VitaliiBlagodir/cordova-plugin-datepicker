@@ -40,6 +40,7 @@ public class DatePickerPlugin extends CordovaPlugin {
 	private static final String ACTION_DATE = "date";
 	private static final String ACTION_TIME = "time";
 	private static final String RESULT_ERROR = "error";
+	private static final String RESULT_CANCEL = "cancel";
 	private final String pluginName = "DatePickerPlugin";
 	
 	// On some devices, onDateSet or onTimeSet are being called twice
@@ -115,6 +116,7 @@ public class DatePickerPlugin extends CordovaPlugin {
 						@Override
 						public void onClick(DialogInterface dialog, int which) {
 							canceled = true;
+							callbackContext.error(RESULT_CANCEL);
 						}
 					});
 					String labelOk = jsonDate.okText.isEmpty() ? currentCtx.getString(android.R.string.ok) : jsonDate.okText;
@@ -175,6 +177,7 @@ public class DatePickerPlugin extends CordovaPlugin {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 				canceled = true;
+				callbackContext.error(RESULT_CANCEL);
             }
         });
 		String labelOk = jsonDate.okText.isEmpty() ? currentCtx.getString(android.R.string.ok) : jsonDate.okText;
