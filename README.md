@@ -21,18 +21,24 @@ New in 0.8.0 (Android Only):
 
 ## Installation
 
-1) Make sure that you have [Node](http://nodejs.org/) and [Cordova CLI](https://github.com/apache/cordova-cli) or [PhoneGap's CLI](https://github.com/mwbrooks/phonegap-cli) installed on your machine.
-
-2) Add a plugin to your project using Cordova CLI:
+- Local development workflow using [Cordova CLI](http://cordova.apache.org/docs/en/edge/)
 
 ```bash
 cordova plugin add cordova-plugin-datepicker
 ```
-Or using PhoneGap CLI:
+
+- Local development workflow using [PhoneGap CLI](http://phonegap.com/install/)
 
 ```bash
 phonegap local plugin add cordova-plugin-datepicker
 ```
+
+- Cloud-based development workflow using [PhoneGap Build](http://build.phonegap.com)
+
+```bash
+<gap:plugin name="cordova-plugin-datepicker" source="npm" />
+```
+
 
 ## Usage
 
