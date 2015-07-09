@@ -160,7 +160,7 @@
 #pragma mark - UIPopoverControllerDelegate methods
 
 - (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController {
-
+  [self jsDateSelected];
 }
 
 #pragma mark - Factory methods
@@ -189,8 +189,10 @@
   
   CGFloat x = [[options objectForKey:@"x"] intValue];
   CGFloat y = [[options objectForKey:@"y"] intValue];
+  UIPopoverArrowDirection arrowDirection = [[options objectForKey:@"popoverArrowDirection"] intValue];
+  
   CGRect anchor = CGRectMake(x, y, 1, 1);
-  [popover presentPopoverFromRect:anchor inView:self.webView.superview  permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+  [popover presentPopoverFromRect:anchor inView:self.webView.superview  permittedArrowDirections:arrowDirection animated:YES];
   
   return popover;
 }
@@ -212,6 +214,8 @@
   NSString *maxDateString = [options objectForKey:@"maxDate"];
   NSString *minuteIntervalString = [options objectForKey:@"minuteInterval"];
   NSInteger minuteInterval = [minuteIntervalString integerValue];
+  NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:[options objectForKey:@"locale"]];
+
   
   if (allowOldDates) {
     self.datePicker.minimumDate = nil;
@@ -248,6 +252,10 @@
 
   if (minuteInterval) {
     self.datePicker.minuteInterval = minuteInterval;
+  }
+
+  if (locale) {
+    [self.datePicker setLocale:locale];
   }
 }
 
