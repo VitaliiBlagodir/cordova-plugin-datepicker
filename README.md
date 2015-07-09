@@ -201,7 +201,7 @@ Default: `1`
 Force the UIPopoverArrowDirection enum.
 The value `any` will revert to default `UIPopoverArrowDirectionAny` and let the app choose the proper direction itself.
 
-Values: `up` | `down` | `left` | `right | `any`
+Values: `up` | `down` | `left` | `right` | `any`
 
 Type: String
 

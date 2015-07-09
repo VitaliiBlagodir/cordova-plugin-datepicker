@@ -114,7 +114,6 @@ DatePicker.prototype._UIPopoverArrowDirection = {
 };
 
 DatePicker.prototype._popoverArrowDirectionIntegerFromString = function (string) {
-    console.log('_popoverArrowDirectionIntegerFromString', this);
     if (typeof this._UIPopoverArrowDirection[string] !== "undefined") {
         return this._UIPopoverArrowDirection[string];
     }
