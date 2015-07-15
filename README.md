@@ -130,6 +130,15 @@ Values: `true` | `false`
 
 Default: `false`
 
+### androidTheme - Android
+Choose the theme of the picker
+
+Type: Int
+
+Values: `THEME_TRADITIONAL | THEME_HOLO_DARK | THEME_HOLO_LIGHT | THEME_DEVICE_DEFAULT_DARK | THEME_DEVICE_DEFAULT_LIGHT`
+
+Default: `THEME_TRADITIONAL`
+
 ### allowOldDates - iOS
 Shows or hide dates earlier then selected date.
 

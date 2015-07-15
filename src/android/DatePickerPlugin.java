@@ -65,13 +65,17 @@ public class DatePickerPlugin extends CordovaPlugin {
 		Context currentCtx = cordova.getActivity();
 		Runnable runnable;
 		JsonDate jsonDate = new JsonDate().fromJson(data);
-		
+		    
+    // Retrieve Android theme
+    JSONObject options = data.optJSONObject(0);
+    int theme = options.optInt("androidTheme", 1);
+
 		if (ACTION_TIME.equalsIgnoreCase(jsonDate.action)) {
-			runnable = runnableTimeDialog(datePickerPlugin, currentCtx,
+			runnable = runnableTimeDialog(datePickerPlugin, theme, currentCtx,
 					callbackContext, jsonDate, Calendar.getInstance(TimeZone.getDefault()));
 
 		} else {
-			runnable = runnableDatePicker(datePickerPlugin, currentCtx, callbackContext, jsonDate);
+			runnable = runnableDatePicker(datePickerPlugin, theme, currentCtx, callbackContext, jsonDate);
 		}
 
 		cordova.getActivity().runOnUiThread(runnable);
@@ -82,13 +86,13 @@ public class DatePickerPlugin extends CordovaPlugin {
 	private int timePickerMinute = 0;
 	
 	private Runnable runnableTimeDialog(final DatePickerPlugin datePickerPlugin,
-			final Context currentCtx, final CallbackContext callbackContext,
+			final int theme, final Context currentCtx, final CallbackContext callbackContext,
 			final JsonDate jsonDate, final Calendar calendarDate) {
 		return new Runnable() {
 			@Override
 			public void run() {
 				final TimeSetListener timeSetListener = new TimeSetListener(datePickerPlugin, callbackContext, calendarDate);
-				final TimePickerDialog timeDialog = new TimePickerDialog(currentCtx, timeSetListener, jsonDate.hour,
+				final TimePickerDialog timeDialog = new TimePickerDialog(currentCtx, theme, timeSetListener, jsonDate.hour,
 						jsonDate.minutes, jsonDate.is24Hour) {
 					public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
 						timePicker = view;
@@ -138,13 +142,14 @@ public class DatePickerPlugin extends CordovaPlugin {
 	}
 	
 	private Runnable runnableDatePicker(
-			final DatePickerPlugin datePickerPlugin, final Context currentCtx,
+			final DatePickerPlugin datePickerPlugin,
+			final int theme, final Context currentCtx,
 			final CallbackContext callbackContext, final JsonDate jsonDate) {
 		return new Runnable() {
 			@Override
 			public void run() {
-				final DateSetListener dateSetListener = new DateSetListener(datePickerPlugin, callbackContext, jsonDate);
-				final DatePickerDialog dateDialog = new DatePickerDialog(currentCtx, dateSetListener, jsonDate.year,
+				final DateSetListener dateSetListener = new DateSetListener(datePickerPlugin, theme, callbackContext, jsonDate);
+				final DatePickerDialog dateDialog = new DatePickerDialog(currentCtx, theme, dateSetListener, jsonDate.year,
 						jsonDate.month, jsonDate.day);
 				if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
 					prepareDialog(dateDialog, dateSetListener, callbackContext, currentCtx, jsonDate);
@@ -251,11 +256,13 @@ public class DatePickerPlugin extends CordovaPlugin {
 		private JsonDate jsonDate;
 		private final DatePickerPlugin datePickerPlugin;
 		private final CallbackContext callbackContext;
+		private final int theme;
 
-		private DateSetListener(DatePickerPlugin datePickerPlugin, CallbackContext callbackContext, JsonDate jsonDate) {
+		private DateSetListener(DatePickerPlugin datePickerPlugin, int theme, CallbackContext callbackContext, JsonDate jsonDate) {
 			this.datePickerPlugin = datePickerPlugin;
 			this.callbackContext = callbackContext;
 			this.jsonDate = jsonDate;
+      this.theme = theme;
 		}
 
 		/**
@@ -286,7 +293,7 @@ public class DatePickerPlugin extends CordovaPlugin {
 				selectedDate.set(Calendar.MONTH, monthOfYear);
 				selectedDate.set(Calendar.DAY_OF_MONTH, dayOfMonth);
 				
-				cordova.getActivity().runOnUiThread(runnableTimeDialog(datePickerPlugin, cordova.getActivity(),
+				cordova.getActivity().runOnUiThread(runnableTimeDialog(datePickerPlugin, theme, cordova.getActivity(),
 						callbackContext, jsonDate, selectedDate));
 			}
 		}
