@@ -1,4 +1,4 @@
-﻿/**
+/**
 * Phonegap DatePicker Plugin Copyright (c) Greg Allen 2011 MIT Licensed
 * Reused and ported to Android plugin by Daniel van 't Oever
 * Reused and ported to Windows plugin by Thomas Uher
@@ -9,6 +9,19 @@
 function DatePicker() {
 	//this._callback;
 }
+
+/**
+ * Android themes
+ * @todo Avoid error when an Android theme is define...
+ */
+DatePicker.prototype.ANDROID_THEMES = {
+  THEME_TRADITIONAL          : 1, // default
+  THEME_HOLO_DARK            : 2,
+  THEME_HOLO_LIGHT           : 3,
+  THEME_DEVICE_DEFAULT_DARK  : 4,
+  THEME_DEVICE_DEFAULT_LIGHT : 5
+};
+
 /**
 * show - true to show the ad, false to hide the ad
 */

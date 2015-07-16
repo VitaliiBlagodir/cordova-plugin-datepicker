@@ -19,6 +19,18 @@ function DatePicker() {
 }
 
 /**
+ * Android themes
+ * @todo Avoid error when an Android theme is define...
+ */
+DatePicker.prototype.ANDROID_THEMES = {
+  THEME_TRADITIONAL          : 1, // default
+  THEME_HOLO_DARK            : 2,
+  THEME_HOLO_LIGHT           : 3,
+  THEME_DEVICE_DEFAULT_DARK  : 4,
+  THEME_DEVICE_DEFAULT_LIGHT : 5
+};
+
+/**
  * show - true to show the ad, false to hide the ad
  */
 DatePicker.prototype.show = function(options, cb) {
