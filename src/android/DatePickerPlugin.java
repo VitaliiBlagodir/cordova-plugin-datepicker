@@ -128,6 +128,7 @@ public class DatePickerPlugin extends CordovaPlugin {
 						@Override
 						public void onClick(DialogInterface dialog, int which) {
 							if (timePicker != null) {
+								timePicker.clearFocus();
 								Calendar now = Calendar.getInstance();
 								timeSetListener.onTimeSet(timePicker, timePickerHour, timePickerMinute);
 							}
@@ -190,6 +191,7 @@ public class DatePickerPlugin extends CordovaPlugin {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 				DatePicker datePicker = dateDialog.getDatePicker();
+				datePicker.clearFocus();
 				dateListener.onDateSet(datePicker, datePicker.getYear(), datePicker.getMonth(), datePicker.getDayOfMonth());
             }
         });
