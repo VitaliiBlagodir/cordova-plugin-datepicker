@@ -206,6 +206,23 @@ Type: Integer
 
 Default: `1`
 
+### popoverArrowDirection - iOS
+Force the UIPopoverArrowDirection enum.
+The value `any` will revert to default `UIPopoverArrowDirectionAny` and let the app choose the proper direction itself.
+
+Values: `up` | `down` | `left` | `right` | `any`
+
+Type: String
+
+Default: `any`
+
+### locale - iOS
+Force locale for datePicker.
+
+Type: String
+
+Default: `en_us`
+
 ## Requirements
 - Cordova 3.0+
 - iOS 6.0+

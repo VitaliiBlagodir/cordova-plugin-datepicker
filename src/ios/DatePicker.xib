@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment defaultVersion="1536" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DatePicker">
@@ -20,13 +19,13 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b2J-jW-BgT">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b2J-jW-BgT">
                     <rect key="frame" x="0.0" y="354" width="320" height="216"/>
                     <subviews>
-                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CHZ-tf-She">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CHZ-tf-She">
                             <rect key="frame" x="0.0" y="54" width="320" height="180"/>
                             <subviews>
-                                <datePicker contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="SUg-U1-bKY">
+                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="SUg-U1-bKY">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="162"/>
                                     <date key="date" timeIntervalSinceReferenceDate="408285701.96363503">
                                         <!--2013-12-09 12:41:41 +0000-->
@@ -35,16 +34,16 @@
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstAttribute="bottom" secondItem="SUg-U1-bKY" secondAttribute="bottom" id="BFv-4x-nTt"/>
+                                <constraint firstAttribute="bottom" secondItem="SUg-U1-bKY" secondAttribute="bottom" constant="18" id="BFv-4x-nTt"/>
                                 <constraint firstAttribute="centerX" secondItem="SUg-U1-bKY" secondAttribute="centerX" id="HX3-eJ-dgx"/>
                                 <constraint firstItem="SUg-U1-bKY" firstAttribute="top" secondItem="CHZ-tf-She" secondAttribute="top" id="QPo-jn-T5C"/>
                             </constraints>
                         </view>
-                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xq4-6B-F5W">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xq4-6B-F5W">
                             <rect key="frame" x="0.0" y="8" width="155" height="46"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="44" id="rdQ-Si-ceK"/>
+                                <constraint firstAttribute="height" constant="46" id="rdQ-Si-ceK"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <inset key="contentEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -55,10 +54,10 @@
                                 <action selector="cancelAction:" destination="-1" eventType="touchUpInside" id="blS-dS-tPm"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalCompressionResistancePriority="751" misplaced="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FEs-Wn-Ur2">
+                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalCompressionResistancePriority="751" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FEs-Wn-Ur2">
                             <rect key="frame" x="165" y="8" width="155" height="46"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                             <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="20" maxY="0.0"/>
                             <state key="normal" title="done button"/>
                             <connections>
@@ -69,16 +68,16 @@
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstItem="FEs-Wn-Ur2" firstAttribute="height" secondItem="xq4-6B-F5W" secondAttribute="height" id="0XS-oZ-CNe"/>
-                        <constraint firstAttribute="height" constant="210" id="9uR-69-zFL"/>
+                        <constraint firstAttribute="height" constant="216" id="9uR-69-zFL"/>
                         <constraint firstItem="FEs-Wn-Ur2" firstAttribute="width" secondItem="xq4-6B-F5W" secondAttribute="width" id="Gl0-Ut-zPZ"/>
                         <constraint firstItem="CHZ-tf-She" firstAttribute="leading" secondItem="b2J-jW-BgT" secondAttribute="leading" id="NUO-OT-Yul"/>
                         <constraint firstAttribute="trailing" secondItem="CHZ-tf-She" secondAttribute="trailing" id="Pds-Eg-BO8"/>
-                        <constraint firstAttribute="bottom" secondItem="CHZ-tf-She" secondAttribute="bottom" id="Pz2-m8-ZCU"/>
-                        <constraint firstItem="xq4-6B-F5W" firstAttribute="top" secondItem="b2J-jW-BgT" secondAttribute="top" id="bcc-2v-8aw"/>
+                        <constraint firstAttribute="bottom" secondItem="CHZ-tf-She" secondAttribute="bottom" constant="-18" id="Pz2-m8-ZCU"/>
+                        <constraint firstItem="xq4-6B-F5W" firstAttribute="top" secondItem="b2J-jW-BgT" secondAttribute="top" constant="8" id="bcc-2v-8aw"/>
                         <constraint firstItem="xq4-6B-F5W" firstAttribute="top" secondItem="FEs-Wn-Ur2" secondAttribute="top" id="n2U-fL-D2y"/>
                         <constraint firstItem="CHZ-tf-She" firstAttribute="trailing" secondItem="FEs-Wn-Ur2" secondAttribute="trailing" id="uef-vO-KLf"/>
                         <constraint firstItem="FEs-Wn-Ur2" firstAttribute="leading" secondItem="xq4-6B-F5W" secondAttribute="trailing" constant="10" id="wS8-8a-p64"/>
-                        <constraint firstItem="CHZ-tf-She" firstAttribute="top" secondItem="FEs-Wn-Ur2" secondAttribute="bottom" constant="10" id="wo1-5V-ljM"/>
+                        <constraint firstItem="CHZ-tf-She" firstAttribute="top" secondItem="FEs-Wn-Ur2" secondAttribute="bottom" id="wo1-5V-ljM"/>
                         <constraint firstItem="CHZ-tf-She" firstAttribute="leading" secondItem="xq4-6B-F5W" secondAttribute="leading" id="yLp-P8-0xk"/>
                     </constraints>
                 </view>
@@ -86,7 +85,7 @@
             <constraints>
                 <constraint firstItem="b2J-jW-BgT" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="7Cn-9l-1Ra"/>
                 <constraint firstAttribute="trailing" secondItem="b2J-jW-BgT" secondAttribute="trailing" id="ftU-Z8-LOZ"/>
-                <constraint firstAttribute="bottom" secondItem="b2J-jW-BgT" secondAttribute="bottom" id="v9p-KT-uOF"/>
+                <constraint firstAttribute="bottom" secondItem="b2J-jW-BgT" secondAttribute="bottom" constant="-2" id="v9p-KT-uOF"/>
             </constraints>
         </view>
         <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" id="uRz-8Y-jzJ">
