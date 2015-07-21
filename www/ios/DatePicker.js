@@ -1,10 +1,10 @@
 /**
   Phonegap DatePicker Plugin
   https://github.com/sectore/phonegap3-ios-datepicker-plugin
-  
+
   Copyright (c) Greg Allen 2011
   Additional refactoring by Sam de Freyssinet
-  
+
   Rewrite by Jens Krause (www.websector.de)
 
   MIT Licensed
@@ -42,15 +42,19 @@ DatePicker.prototype.show = function(options, cb) {
     };
 
     var formatDate = function(date){
-      date = date.getFullYear() 
-            + "-" 
-            + padDate(date.getMonth()+1) 
-            + "-" 
-            + padDate(date.getDate()) 
-            + "T" 
-            + padDate(date.getHours()) 
-            + ":" 
-            + padDate(date.getMinutes()) 
+      // date/minDate/maxDate will be string at second time
+      if (!(date instanceof Date)) {
+        date = new Date(date)
+      }
+      date = date.getFullYear()
+            + "-"
+            + padDate(date.getMonth()+1)
+            + "-"
+            + padDate(date.getDate())
+            + "T"
+            + padDate(date.getHours())
+            + ":"
+            + padDate(date.getMinutes())
             + ":00Z";
 
       return date
@@ -98,9 +102,9 @@ DatePicker.prototype.show = function(options, cb) {
     }
     this._callback = cb;
 
-    exec(null, 
-      null, 
-      "DatePicker", 
+    exec(null,
+      null,
+      "DatePicker",
       "show",
       [defaults]
     );
