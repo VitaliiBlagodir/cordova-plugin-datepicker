@@ -1,6 +1,6 @@
 {
   "name": "cordova-plugin-datepicker",
-  "version": "0.8.7",
+  "version": "0.8.8",
   "description": "Cordova DatePicker Plugin",
   "cordova": {
     "id": "cordova-plugin-datepicker",
