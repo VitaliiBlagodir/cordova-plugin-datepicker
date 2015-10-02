@@ -93,6 +93,13 @@ Type: Date | empty String
 
 Default: `(empty String)` 
 
+### titleText - Android
+Label for the dialog title. If empty, uses android default (Set date/Set time).
+
+Type: String | empty String
+
+Default: `(empty String)`
+
 ### okText - Android
 Label of BUTTON_POSITIVE (done button). If empty, uses android.R.string.ok.
 

@@ -6,6 +6,9 @@
  * @author Andre Moraes (https://github.com/andrelsmoraes)
  * Refactored code, changed default mode to show date and time dialog.
  * Added options `okText`, `cancelText`, `todayText`, `nowText`, `is24Hour`.
+ *
+ * @author Diego Silva (https://github.com/diego-silva)
+ * Added option `titleText`.
  */
 
 package com.plugin.datepicker;
@@ -104,6 +107,9 @@ public class DatePickerPlugin extends CordovaPlugin {
 					timeDialog.setCancelable(true);
 					timeDialog.setCanceledOnTouchOutside(false);
 					
+					if (!jsonDate.titleText.isEmpty()){
+						timeDialog.setTitle(jsonDate.titleText);
+					}
 					if (!jsonDate.nowText.isEmpty()){
 						timeDialog.setButton(DialogInterface.BUTTON_NEUTRAL, jsonDate.nowText, new DialogInterface.OnClickListener() {
 							@Override
@@ -168,6 +174,9 @@ public class DatePickerPlugin extends CordovaPlugin {
 			final CallbackContext callbackContext, Context currentCtx, JsonDate jsonDate) {
 		dateDialog.setCancelable(true);
 		dateDialog.setCanceledOnTouchOutside(false);
+		if (!jsonDate.titleText.isEmpty()){
+			dateDialog.setTitle(jsonDate.titleText);
+		}
 		if (!jsonDate.todayText.isEmpty()){
             dateDialog.setButton(DialogInterface.BUTTON_NEUTRAL, jsonDate.todayText, new DialogInterface.OnClickListener() {
                 @Override
@@ -335,6 +344,7 @@ public class DatePickerPlugin extends CordovaPlugin {
 	private final class JsonDate {
 		
 		private String action = ACTION_DATE;
+		private String titleText = "";
 		private String okText = "";
 		private String cancelText = "";
 		private String todayText = "";
@@ -369,6 +379,7 @@ public class DatePickerPlugin extends CordovaPlugin {
 				minDate = isNotEmpty(obj, "minDate") ? obj.getLong("minDate") : 0l;
 				maxDate = isNotEmpty(obj, "maxDate") ? obj.getLong("maxDate") : 0l;
 
+				titleText = isNotEmpty(obj, "titleText") ? obj.getString("titleText") : "";
 				okText = isNotEmpty(obj, "okText") ? obj.getString("okText") : "";
 				cancelText = isNotEmpty(obj, "cancelText") ? obj
 						.getString("cancelText") : "";
