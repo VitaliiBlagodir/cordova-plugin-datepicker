@@ -36,11 +36,11 @@
 
 - (void)show:(CDVInvokedUrlCommand*)command {
   NSMutableDictionary *options = [command argumentAtIndex:0];
-  if (isIPhone) {
+  //if (isIPhone) {
     [self showForPhone: options];
-  } else {
-    [self showForPad: options];
-  }
+  //} else {
+ //   [self showForPad: options];
+ // }
 }
 
 - (BOOL)showForPhone:(NSMutableDictionary *)options {
@@ -105,7 +105,7 @@
 }
 
 - (void)hide {
-  if (isIPhone) {
+  //if (isIPhone) {
     CGRect frame = CGRectOffset(self.datePickerComponentsContainer.frame,
                                 0,
                                 self.datePickerComponentsContainer.frame.size.height);
@@ -121,9 +121,9 @@
                        [self.datePickerContainer removeFromSuperview];
                      }];
 
-  } else {
-    [self.datePickerPopover dismissPopoverAnimated:YES];
-  }
+ // } else {
+ //   [self.datePickerPopover dismissPopoverAnimated:YES];
+ // }
 }
 
 #pragma mark - Actions
