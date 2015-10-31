@@ -84,7 +84,7 @@ Type: Date | empty String
 
 Default: `(empty String)`
 
-minDate is a Date object for iOS and a millisecond precision unix timestamp for Android, so you need to account for that when using the plugin.
+minDate is a Date object for iOS and a millisecond precision unix timestamp for Android, so you need to account for that when using the plugin. Also, on Android, only the date is enforced (time is not).
 
 ### maxDate - iOS, Android, Windows
 Maximum date.
