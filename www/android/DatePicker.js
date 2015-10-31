@@ -26,7 +26,7 @@ DatePicker.prototype.ANDROID_THEMES = {
  */
 DatePicker.prototype.show = function(options, cb, errCb) {
 
-	if (options.date) {
+	if (options.date && options.date instanceof Date) {
 		options.date = (options.date.getMonth() + 1) + "/" +
 					   (options.date.getDate()) + "/" +
 					   (options.date.getFullYear()) + "/" +
