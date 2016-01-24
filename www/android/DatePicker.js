@@ -26,17 +26,20 @@ DatePicker.prototype.ANDROID_THEMES = {
  */
 DatePicker.prototype.show = function(options, cb, errCb) {
 
-	if (options.date && options.date instanceof Date) {
-		options.date = (options.date.getMonth() + 1) + "/" +
-					   (options.date.getDate()) + "/" +
-					   (options.date.getFullYear()) + "/" +
-					   (options.date.getHours()) + "/" +
-					   (options.date.getMinutes());
-	}
+	if ( !options.date || !(options.date instanceof Date) )
+		options.date = new Date();
+
+	options.date = [
+		options.date.getMonth() + 1,
+		options.date.getDate(),
+		options.date.getFullYear(),
+		options.date.getHours(),
+		options.date.getMinutes()
+	].join( '/' );
 
 	var defaults = {
 		mode : 'date',
-		date : '',
+		date : options.date,
 		minDate: 0,
 		maxDate: 0,
 		titleText: '',
