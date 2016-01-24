@@ -26,7 +26,7 @@ DatePicker.prototype.ANDROID_THEMES = {
  */
 DatePicker.prototype.show = function(options, cb, errCb) {
 
-	if ( !options.date || options.date instanceof Date )
+	if ( !options.date || !(options.date instanceof Date) )
 		options.date = new Date();
 
 	options.date = [
