@@ -44,7 +44,7 @@ DatePicker.prototype.show = function(options, cb) {
     var formatDate = function(date){
       // date/minDate/maxDate will be string at second time
       if (!(date instanceof Date)) {
-        date = new Date(date)
+        date = new Date(date);
       }
       date = date.getFullYear()
             + "-"
@@ -57,7 +57,7 @@ DatePicker.prototype.show = function(options, cb) {
             + padDate(date.getMinutes())
             + ":00Z";
 
-      return date
+      return date;
     }
 
     if (options.date) {
@@ -88,7 +88,6 @@ DatePicker.prototype.show = function(options, cb) {
         doneButtonColor: '#007AFF',
         cancelButtonLabel: 'Cancel',
         cancelButtonColor: '#007AFF',
-        locale: "NL",
         x: '0',
         y: '0',
         minuteInterval: 1,
