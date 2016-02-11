@@ -109,6 +109,14 @@ DatePicker.prototype.show = function(options, cb) {
     );
 };
 
+DatePicker.prototype.hide = function() {
+    exec(null,
+      null,
+      "DatePicker",
+      "hide"
+    );
+};
+
 DatePicker.prototype._dateSelected = function(date) {
     var d = new Date(parseFloat(date) * 1000);
     if (this._callback)
