@@ -44,7 +44,7 @@
 }
 
 - (void)hide:(CDVInvokedUrlCommand*)command {
-  [self hideKeyboard];
+  [self hideDatepicker];
 }
 
 - (BOOL)showForPhone:(NSMutableDictionary *)options {
@@ -108,7 +108,7 @@
     return true;
 }
 
-- (void)hideKeyboard {
+- (void)hideDatepicker {
   //if (isIPhone) {
     CGRect frame = CGRectOffset(self.datePickerComponentsContainer.frame,
                                 0,
@@ -133,12 +133,12 @@
 #pragma mark - Actions
 - (IBAction)doneAction:(id)sender {
   [self jsDateSelected];
-  [self hideKeyboard];
+  [self hideDatepicker];
 }
   
 - (IBAction)cancelAction:(id)sender {
   [self jsCancel];
-  [self hideKeyboard];
+  [self hideDatepicker];
 }
 
 
