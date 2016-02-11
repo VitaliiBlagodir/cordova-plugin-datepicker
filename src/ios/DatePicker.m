@@ -43,6 +43,10 @@
  // }
 }
 
+- (void)hide:(CDVInvokedUrlCommand*)command {
+  [self hideKeyboard];
+}
+
 - (BOOL)showForPhone:(NSMutableDictionary *)options {
   if(!self.datePickerContainer){
     [[NSBundle mainBundle] loadNibNamed:@"DatePicker" owner:self options:nil];
@@ -104,7 +108,7 @@
     return true;
 }
 
-- (void)hide {
+- (void)hideKeyboard {
   //if (isIPhone) {
     CGRect frame = CGRectOffset(self.datePickerComponentsContainer.frame,
                                 0,
@@ -129,12 +133,12 @@
 #pragma mark - Actions
 - (IBAction)doneAction:(id)sender {
   [self jsDateSelected];
-  [self hide];
+  [self hideKeyboard];
 }
   
 - (IBAction)cancelAction:(id)sender {
   [self jsCancel];
-  [self hide];
+  [self hideKeyboard];
 }
 
 
