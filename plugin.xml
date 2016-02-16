@@ -13,7 +13,7 @@
 
     <keywords>cordova,phonegap,datepicker,android,ios,ios7,ios8,wp</keywords>
 
-    <repo>https://github.com/VitaliiBlagodir/cordova-plugin-datepicker.git</repo>
+    <repo>https://github.com/se1exin/cordova-plugin-datepicker</repo>
 
     <!-- android -->
     <platform name="android">
@@ -35,6 +35,7 @@
         <config-file target="config.xml" parent="/*">
         <feature name="DatePicker">
             <param name="ios-package" value="DatePicker"/>
+            <param name="onload" value="true" />
         </feature>
         </config-file>
 

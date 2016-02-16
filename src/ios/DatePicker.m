@@ -34,6 +34,10 @@
 
 #pragma mark - UIDatePicker
 
+- (void)pluginInitialize {
+  NSLog(@"Init DatePicker");
+}
+
 - (void)show:(CDVInvokedUrlCommand*)command {
   NSMutableDictionary *options = [command argumentAtIndex:0];
   //if (isIPhone) {
@@ -41,6 +45,10 @@
   //} else {
  //   [self showForPad: options];
  // }
+}
+
+- (void)hide:(CDVInvokedUrlCommand*)command {
+  [self hideDatepicker];
 }
 
 - (BOOL)showForPhone:(NSMutableDictionary *)options {
@@ -104,7 +112,7 @@
     return true;
 }
 
-- (void)hide {
+- (void)hideDatepicker {
   //if (isIPhone) {
     CGRect frame = CGRectOffset(self.datePickerComponentsContainer.frame,
                                 0,
@@ -129,12 +137,12 @@
 #pragma mark - Actions
 - (IBAction)doneAction:(id)sender {
   [self jsDateSelected];
-  [self hide];
+  [self hideDatepicker];
 }
   
 - (IBAction)cancelAction:(id)sender {
   [self jsCancel];
-  [self hide];
+  [self hideDatepicker];
 }
 
 
