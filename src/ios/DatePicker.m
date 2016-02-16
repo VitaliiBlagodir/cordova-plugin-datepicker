@@ -34,6 +34,10 @@
 
 #pragma mark - UIDatePicker
 
+- (void)pluginInitialize {
+  NSLog(@"Init DatePicker");
+}
+
 - (void)show:(CDVInvokedUrlCommand*)command {
   NSMutableDictionary *options = [command argumentAtIndex:0];
   //if (isIPhone) {
