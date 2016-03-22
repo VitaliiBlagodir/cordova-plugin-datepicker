@@ -84,6 +84,9 @@ Type: Date | empty String
 
 Default: `(empty String)`
 
+Note: 
+> android need `Long` type
+
 minDate is a Date object for iOS and a millisecond precision unix timestamp for Android, so you need to account for that when using the plugin. Also, on Android, only the date is enforced (time is not).
 
 ### maxDate - iOS, Android, Windows
@@ -92,6 +95,9 @@ Maximum date.
 Type: Date | empty String
 
 Default: `(empty String)`
+
+Note: 
+> android need `Long` type
 
 ### titleText - Android
 Label for the dialog title. If empty, uses android default (Set date/Set time).
@@ -155,6 +161,8 @@ Values: `true` | `false`
 
 Default: `true`
 
+Note: `allowOldDates` and `minDate` can not been used at the same time
+
 ### allowFutureDates - iOS
 Shows or hide dates after selected date.
 
@@ -163,6 +171,8 @@ Type: Boolean
 Values: `true` | `false`
 
 Default: `true`
+
+Note: `allowFutureDates` and `maxDate` can not been used at the same time
 
 ### doneButtonLabel - iOS
 Label of done button.
