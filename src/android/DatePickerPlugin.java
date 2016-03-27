@@ -18,6 +18,9 @@ import java.util.Calendar;
 import java.util.TimeZone;
 import java.util.Random;
 
+import java.text.DateFormat;
+import java.lang.reflect.Field;
+
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
 import org.json.JSONArray;
@@ -36,6 +39,7 @@ import android.util.Log;
 import android.widget.DatePicker;
 import android.widget.DatePicker.OnDateChangedListener;
 import android.widget.TimePicker;
+
 
 @SuppressLint("NewApi")
 public class DatePickerPlugin extends CordovaPlugin {
@@ -95,14 +99,22 @@ public class DatePickerPlugin extends CordovaPlugin {
 			@Override
 			public void run() {
 				final TimeSetListener timeSetListener = new TimeSetListener(datePickerPlugin, callbackContext, calendarDate);
-				final TimePickerDialog timeDialog = new TimePickerDialog(currentCtx, theme, timeSetListener, jsonDate.hour,
-						jsonDate.minutes, jsonDate.is24Hour) {
-					public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
-						timePicker = view;
-						timePickerHour = hourOfDay;
-						timePickerMinute = minute;
-					}
-				};
+				final RangeTimePickerDialog timeDialog = new RangeTimePickerDialog(currentCtx, theme, timeSetListener, jsonDate.hour,
+						jsonDate.minutes, jsonDate.is24Hour);
+
+				final Calendar minDate = Calendar.getInstance();
+				minDate.setTimeInMillis(jsonDate.minDate);
+				int minHour = minDate.get(Calendar.HOUR_OF_DAY);
+				int minMinute = minDate.get(Calendar.MINUTE);
+
+				final Calendar maxDate = Calendar.getInstance();
+				maxDate.setTimeInMillis(jsonDate.maxDate);
+				int maxHour = maxDate.get(Calendar.HOUR_OF_DAY);
+				int maxMinute = maxDate.get(Calendar.MINUTE);
+
+				timeDialog.setMin(minHour, minMinute);
+				timeDialog.setMax(maxHour, maxMinute);
+
 				if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
 					timeDialog.setCancelable(true);
 					timeDialog.setCanceledOnTouchOutside(false);
@@ -138,6 +150,78 @@ public class DatePickerPlugin extends CordovaPlugin {
 			}
 		};
 	}
+
+	public class RangeTimePickerDialog extends TimePickerDialog {
+
+		private int minHour = -1;
+		private int minMinute = -1;
+
+		private int maxHour = 25;
+		private int maxMinute = 25;
+
+		private int currentHour = 0;
+		private int currentMinute = 0;
+
+		private Calendar calendar = Calendar.getInstance();
+		private DateFormat dateFormat;
+
+		public RangeTimePickerDialog(Context context, int theme, OnTimeSetListener callBack, int hourOfDay, int minute, boolean is24HourView) {
+		    super(context, theme, callBack, hourOfDay, minute, is24HourView);
+		    currentHour = hourOfDay;
+		    currentMinute = minute;
+		    dateFormat = DateFormat.getTimeInstance(DateFormat.SHORT);
+
+		    try {
+		        Class<?> superclass = getClass().getSuperclass();
+		        Field mTimePickerField = superclass.getDeclaredField("mTimePicker");
+		        mTimePickerField.setAccessible(true);
+		        TimePicker mTimePicker = (TimePicker) mTimePickerField.get(this);
+		        mTimePicker.setOnTimeChangedListener(this);
+		    } catch (NoSuchFieldException e) {
+		    } catch (IllegalArgumentException e) {
+		    } catch (IllegalAccessException e) {
+		    }
+		}
+
+		public void setMin(int hour, int minute) {
+		    minHour = hour;
+		    minMinute = minute;
+		}
+
+		public void setMax(int hour, int minute) {
+		    maxHour = hour;
+		    maxMinute = minute;
+		}
+
+		@Override
+		public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
+
+			boolean validTime = true;
+			if (hourOfDay < minHour || (hourOfDay == minHour && minute < minMinute)) {
+				currentHour = minHour;
+				currentMinute = minMinute;
+				validTime = false;
+			}
+
+			if (hourOfDay > maxHour || (hourOfDay == maxHour && minute > maxMinute)) {
+				currentHour = maxHour;
+				currentMinute = maxMinute;
+				validTime = false;
+			}
+
+			if (validTime == false) {
+				updateTime(currentHour, currentMinute);
+				updateDialogTitle(view, currentHour, currentMinute);
+			}
+		}
+
+		private void updateDialogTitle(TimePicker timePicker, int hourOfDay, int minute) {
+		    calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
+		    calendar.set(Calendar.MINUTE, minute);
+		    String title = dateFormat.format(calendar.getTime());
+		    setTitle(title);
+		}
+ 	}
 
 	private Runnable runnableDatePicker(
 			final DatePickerPlugin datePickerPlugin,
