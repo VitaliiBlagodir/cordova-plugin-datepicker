@@ -3,7 +3,12 @@
 This is a combined version of DatePicker iOS and Android and Windows plugin for Cordova/Phonegap 4.0.
 - Original iOS version: https://github.com/sectore/phonegap3-ios-datepicker-plugin
 
+-
+
 - Original Android version: https://github.com/bikasv/cordova-android-plugins/tree/master/datepicker
+- New features planned:
+* Adding custom dates
+* Adding calenders notes
 
 New in 0.8.0 (Android Only):
 - Android code refactored
@@ -234,3 +239,10 @@ Default: `en_us`
 - Cordova 3.0+
 - iOS 6.0+
 - Android 2.3+
+- 
+** Further changes:
+
+* Days caluclator
+* Adding time picker
+* Adding stopwatch feature
+* __ By Chandan CH
