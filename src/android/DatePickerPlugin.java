@@ -45,6 +45,8 @@ public class DatePickerPlugin extends CordovaPlugin {
 	private static final String RESULT_ERROR = "error";
 	private static final String RESULT_CANCEL = "cancel";
 	private final String pluginName = "DatePickerPlugin";
+		private static final String Custom_Date = "Custom date";
+
 	
 	// On some devices, onDateSet or onTimeSet are being called twice
 	private boolean called = false;
