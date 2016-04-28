@@ -240,8 +240,15 @@
   if(maxDateString && maxDateString.length > 0){
     self.datePicker.maximumDate = [formatter dateFromString:maxDateString];
   }
-  
-  self.datePicker.date = [formatter dateFromString:dateString];
+
+  @try{
+    self.datePicker.date = [formatter dateFromString:dateString];
+  } @catch (NSException *exception) {
+    NSLog(@"Write failed with error: %@", exception);
+    NSString *dateS;
+    dateS = [formatter stringFromDate:[NSDate date]];
+    self.datePicker.date = [formatter dateFromString:dateS];
+  }
   
   if ([mode isEqualToString:@"date"]) {
     self.datePicker.datePickerMode = UIDatePickerModeDate;
