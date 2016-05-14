@@ -16,6 +16,7 @@ var exec = require('cordova/exec');
  */
 function DatePicker() {
     this._callback;
+    this.history;
 }
 
 /**
@@ -35,7 +36,7 @@ DatePicker.prototype.ANDROID_THEMES = {
  */
 DatePicker.prototype.show = function(options, cb) {
     var padDate = function(date) {
-      if (date.length == 1) {
+      if (date.toString().length == 1) {
         return ("0" + date);
       }
       return date;
@@ -61,7 +62,10 @@ DatePicker.prototype.show = function(options, cb) {
     }
 
     if (options.date) {
-        options.date = formatDate(options.date);
+      if (options.history && this.history) {
+        options.date = this.history
+      }
+      options.date = formatDate(options.date);
     }
 
     if (options.minDate) {
@@ -112,6 +116,7 @@ DatePicker.prototype.show = function(options, cb) {
 
 DatePicker.prototype._dateSelected = function(date) {
     var d = new Date(parseFloat(date) * 1000);
+    this.history = d;
     if (this._callback)
         this._callback(d);
 };

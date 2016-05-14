@@ -93,6 +93,15 @@ Type: Date | empty String
 
 Default: `(empty String)`
 
+### history - iOS, Android
+Remember the date you last selected， show the date when you select again
+
+Type: Boolean
+
+Values: `true` | `false`
+
+Default: `false`
+
 ### titleText - Android
 Label for the dialog title. If empty, uses android default (Set date/Set time).
 
