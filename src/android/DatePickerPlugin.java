@@ -144,6 +144,7 @@ public class DatePickerPlugin extends CordovaPlugin {
 	private Runnable runnableDatePicker(
 			final DatePickerPlugin datePickerPlugin,
 			final int theme, final Context currentCtx,
+			final Context Datecontext;
 			final CallbackContext callbackContext, final JsonDate jsonDate) {
 		return new Runnable() {
 			@Override
