@@ -8,6 +8,7 @@
  */
 function DatePicker() {
   //this._callback;
+    this.history
 }
 
 /**
@@ -26,13 +27,29 @@ DatePicker.prototype.ANDROID_THEMES = {
  */
 DatePicker.prototype.show = function(options, cb, errCb) {
 
-	if (options.date && options.date instanceof Date) {
-		options.date = (options.date.getMonth() + 1) + "/" +
-					   (options.date.getDate()) + "/" +
-					   (options.date.getFullYear()) + "/" +
-					   (options.date.getHours()) + "/" +
-					   (options.date.getMinutes());
-	}
+    var formatDate = function(date) {
+      return Date.parse(new Date(date))
+    }
+    
+    if (options.history && this.history) {
+      options.date = this.history;
+    }
+    
+    if (options.date && options.date instanceof Date) {
+      options.date = (options.date.getMonth() + 1) + "/" +
+        (options.date.getDate()) + "/" +
+        (options.date.getFullYear()) + "/" +
+        (options.date.getHours()) + "/" +
+        (options.date.getMinutes());
+    }
+
+    if (options.minDate) {
+      options.minDate = formatDate(options.minDate);
+    }
+
+    if (options.maxDate) {
+      options.maxDate = formatDate(options.maxDate);
+    }
 
 	var defaults = {
 		mode : 'date',
@@ -55,11 +72,12 @@ DatePicker.prototype.show = function(options, cb, errCb) {
 	}
 
 	//this._callback = cb;
-
+        var _this = this;
 	var callback = function(message) {
 		if(message != 'error'){
 			var timestamp = Date.parse(message);
 			if(isNaN(timestamp) == false) {
+                                _this.history = new Date(message)
 				cb(new Date(message));
 			}
 	        else {
