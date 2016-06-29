@@ -27,12 +27,14 @@ import org.json.JSONObject;
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
+import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.app.TimePickerDialog.OnTimeSetListener;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Build;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.widget.DatePicker;
 import android.widget.DatePicker.OnDateChangedListener;
 import android.widget.TimePicker;
@@ -129,6 +131,19 @@ public class DatePickerPlugin extends CordovaPlugin {
 							callbackContext.error(RESULT_CANCEL);
 						}
 					});
+
+                    timeDialog.setOnKeyListener(new Dialog.OnKeyListener() {
+                        @Override
+                        public boolean onKey(DialogInterface arg0, int keyCode,
+                                             KeyEvent event) {
+                            // TODO Auto-generated method stub
+                            if (keyCode == KeyEvent.KEYCODE_BACK) {
+                                callbackContext.error(RESULT_CANCEL);
+                            }
+                            return false;
+                        }
+                    });
+
 					String labelOk = jsonDate.okText.isEmpty() ? currentCtx.getString(android.R.string.ok) : jsonDate.okText;
 					timeDialog.setButton(DialogInterface.BUTTON_POSITIVE, labelOk, timeDialog);
 				}
@@ -195,7 +210,20 @@ public class DatePickerPlugin extends CordovaPlugin {
 				dateListener.onDateSet(datePicker, datePicker.getYear(), datePicker.getMonth(), datePicker.getDayOfMonth());
             }
         });
-        
+
+        dateDialog.setOnKeyListener(new Dialog.OnKeyListener() {
+            @Override
+            public boolean onKey(DialogInterface arg0, int keyCode,
+                                 KeyEvent event) {
+                // TODO Auto-generated method stub
+                Log.i(pluginName, "dateDialog onKey");
+                if (keyCode == KeyEvent.KEYCODE_BACK) {
+                    callbackContext.error(RESULT_CANCEL);
+                }
+                return false;
+            }
+        });
+
         DatePicker dp = dateDialog.getDatePicker();
 		if(jsonDate.minDate > 0) {
 			dp.setMinDate(jsonDate.minDate);
