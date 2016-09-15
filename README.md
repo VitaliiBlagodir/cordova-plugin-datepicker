@@ -146,6 +146,8 @@ Values: `THEME_TRADITIONAL | THEME_HOLO_DARK | THEME_HOLO_LIGHT | THEME_DEVICE_D
 
 Default: `THEME_TRADITIONAL`
 
+Note: These constants are defined inside `plugins.datePicker.ANDROID_THEMES`
+
 ### allowOldDates - iOS
 Shows or hide dates earlier then selected date.
 
