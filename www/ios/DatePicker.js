@@ -79,7 +79,7 @@ DatePicker.prototype.show = function(options, cb) {
 
     var defaults = {
         mode: 'date',
-        date: new Date(),
+        date: formatDate(new Date()),
         allowOldDates: true,
         allowFutureDates: true,
         minDate: '',
