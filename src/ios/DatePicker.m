@@ -145,10 +145,10 @@
 #pragma mark - JS API
 
 - (void)jsCancel {
-  NSLog(@"JS Cancel is going to be executed");
-  NSString *jsCallback = @"datePicker._dateSelectionCanceled();";
+  // NSLog(@"JS Cancel is going to be executed");
+  // NSString *jsCallback = @"datePicker._dateSelectionCanceled();";
     
-  [self.commandDelegate evalJs:jsCallback];
+  // [self.commandDelegate evalJs:jsCallback];
 }
 
 - (void)jsDateSelected {
