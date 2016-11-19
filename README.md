@@ -27,6 +27,11 @@ New in 0.8.0 (Android Only):
 cordova plugin add cordova-plugin-datepicker
 ```
 
+- Local development workflow using [Ionic CLI](http://ionicframework.com/docs/v2/native/date-picker/)
+```bash
+ionic plugin add cordova-plugin-datepicker
+```
+
 - Local development workflow using [PhoneGap CLI](http://phonegap.com/install/)
 
 ```bash
