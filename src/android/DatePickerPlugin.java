@@ -348,6 +348,7 @@ public class DatePickerPlugin extends CordovaPlugin {
 		private int hour = 0;
 		private int minutes = 0;
 		private boolean is24Hour = false;
+		private int minuteInterval = 1;
 
 		public JsonDate() {
 			reset(Calendar.getInstance());
