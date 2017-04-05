@@ -28,6 +28,7 @@
         </js-module>
 
         <source-file src="src/android/DatePickerPlugin.java" target-dir="src/com/plugin/datepicker" />
+        <source-file src="src/android/CustomTimePickerDialog.java" target-dir="src/com/plugin/datepicker" />
     </platform>
 
     <!-- ios -->
