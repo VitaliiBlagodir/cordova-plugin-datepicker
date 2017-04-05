@@ -96,7 +96,7 @@ public class DatePickerPlugin extends CordovaPlugin {
 			public void run() {
 				final TimeSetListener timeSetListener = new TimeSetListener(datePickerPlugin, callbackContext, calendarDate);
 				final TimePickerDialog timeDialog = new CustomTimePickerDialog(currentCtx, theme, timeSetListener, jsonDate.hour,
-						jsonDate.minutes, jsonDate.is24Hour, 15) {
+						jsonDate.minutes, jsonDate.is24Hour, jsonDate.minuteInterval) {
 					public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
 						timePicker = view;
 						timePickerHour = hourOfDay;
@@ -380,6 +380,8 @@ public class DatePickerPlugin extends CordovaPlugin {
 						: "";
 				is24Hour = isNotEmpty(obj, "is24Hour") ? obj.getBoolean("is24Hour")
 						: false;
+				minuteInterval = isNotEmpty(obj, "minuteInterval") ? obj.getInt("minuteInterval")
+						: 1;
 
 				String optionDate = obj.getString("date");
 
