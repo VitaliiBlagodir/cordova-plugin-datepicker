@@ -212,10 +212,24 @@ public class DatePickerPlugin extends CordovaPlugin {
 
 		DatePicker dp = dateDialog.getDatePicker();
 		if(jsonDate.minDate > 0) {
-			dp.setMinDate(jsonDate.minDate);
+			final Calendar minDate = Calendar.getInstance();
+			minDate.setTimeInMillis(jsonDate.minDate);
+			minDate.set(Calendar.HOUR_OF_DAY, minDate.getMinimum(Calendar.HOUR_OF_DAY));
+			minDate.set(Calendar.MINUTE, minDate.getMinimum(Calendar.MINUTE));
+			minDate.set(Calendar.SECOND, minDate.getMinimum(Calendar.SECOND));
+			minDate.set(Calendar.MILLISECOND, minDate.getMinimum(Calendar.MILLISECOND));
+
+			dp.setMinDate(minDate.getTimeInMillis());
 		}
 		if(jsonDate.maxDate > 0 && jsonDate.maxDate > jsonDate.minDate) {
-			dp.setMaxDate(jsonDate.maxDate);
+			final Calendar maxDate = Calendar.getInstance();
+			maxDate.setTimeInMillis(jsonDate.maxDate);
+			maxDate.set(Calendar.HOUR_OF_DAY, maxDate.getMaximum(Calendar.HOUR_OF_DAY));
+			maxDate.set(Calendar.MINUTE, maxDate.getMaximum(Calendar.MINUTE));
+			maxDate.set(Calendar.SECOND, maxDate.getMaximum(Calendar.SECOND));
+			maxDate.set(Calendar.MILLISECOND, maxDate.getMaximum(Calendar.MILLISECOND));
+
+			dp.setMaxDate(maxDate.getTimeInMillis());
 		}
 	}
 
