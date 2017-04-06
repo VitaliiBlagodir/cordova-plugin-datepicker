@@ -45,6 +45,7 @@ DatePicker.prototype.show = function(options, cb, errCb) {
 		todayText: '',
 		nowText: '',
 		is24Hour: false,
+        minuteInterval: 1,
     androidTheme : window.datePicker.ANDROID_THEMES.THEME_TRADITIONAL, // Default theme
 	};
 
