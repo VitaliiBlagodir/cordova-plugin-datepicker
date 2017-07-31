@@ -36,6 +36,7 @@ import android.util.Log;
 import android.widget.DatePicker;
 import android.widget.DatePicker.OnDateChangedListener;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 @SuppressLint("NewApi")
 public class DatePickerPlugin extends CordovaPlugin {
@@ -102,7 +103,16 @@ public class DatePickerPlugin extends CordovaPlugin {
 						timePickerHour = hourOfDay;
 						timePickerMinute = minute;
 					}
+
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						if(dialog instanceof TimePickerDialog){
+							((TimePickerDialog)dialog).getWindow().getDecorView().clearFocus();
+						}
+						super.onClick(dialog, which);
+					}
 				};
+
 				if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
 					timeDialog.setCancelable(true);
 					timeDialog.setCanceledOnTouchOutside(false);
@@ -130,7 +140,7 @@ public class DatePickerPlugin extends CordovaPlugin {
 						}
 					});
 					String labelOk = jsonDate.okText.isEmpty() ? currentCtx.getString(android.R.string.ok) : jsonDate.okText;
-					timeDialog.setButton(DialogInterface.BUTTON_POSITIVE, labelOk, timeDialog);
+					timeDialog.setButton(DialogInterface.BUTTON_POSITIVE, labelOk,timeDialog);
 				}
 				timeDialog.show();
 				timeDialog.updateTime(new Random().nextInt(23), new Random().nextInt(59));
