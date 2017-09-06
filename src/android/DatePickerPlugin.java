@@ -36,6 +36,8 @@ import android.util.Log;
 import android.widget.DatePicker;
 import android.widget.DatePicker.OnDateChangedListener;
 import android.widget.TimePicker;
+import android.view.View;
+import android.widget.FrameLayout;
 
 @SuppressLint("NewApi")
 public class DatePickerPlugin extends CordovaPlugin {
@@ -167,6 +169,11 @@ public class DatePickerPlugin extends CordovaPlugin {
 		dateDialog.setCanceledOnTouchOutside(false);
 		if (!jsonDate.titleText.isEmpty()){
 			dateDialog.setTitle(jsonDate.titleText);
+		}
+		View dialogView = dateDialog.getDatePicker().getChildAt(0);
+		if (dialogView != null) {
+		  FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.WRAP_CONTENT);
+		  dialogView.setLayoutParams(params);
 		}
 		if (!jsonDate.todayText.isEmpty()){
             dateDialog.setButton(DialogInterface.BUTTON_NEUTRAL, jsonDate.todayText, new DialogInterface.OnClickListener() {
