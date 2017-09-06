@@ -168,6 +168,11 @@ public class DatePickerPlugin extends CordovaPlugin {
 		if (!jsonDate.titleText.isEmpty()){
 			dateDialog.setTitle(jsonDate.titleText);
 		}
+		View dialogView = dateDialog.getDatePicker().getChildAt(0);
+		if (dialogView != null) {
+		  FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.WRAP_CONTENT);
+		  dialogView.setLayoutParams(params);
+		}
 		if (!jsonDate.todayText.isEmpty()){
             dateDialog.setButton(DialogInterface.BUTTON_NEUTRAL, jsonDate.todayText, new DialogInterface.OnClickListener() {
                 @Override
