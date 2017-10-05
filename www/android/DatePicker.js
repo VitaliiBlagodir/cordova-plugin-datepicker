@@ -34,6 +34,14 @@ DatePicker.prototype.show = function(options, cb, errCb) {
 					   (options.date.getMinutes());
 	}
 
+	if (options.minDate && options.minDate instanceof Date) {
+		options.minDate = options.minDate.valueOf()
+	}
+
+	if (options.maxDate && options.maxDate instanceof Date) {
+		options.maxDate = options.maxDate.valueOf()
+	}
+
 	var defaults = {
 		mode : 'date',
 		date : '',
