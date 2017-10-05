@@ -84,7 +84,7 @@ Type: Date | empty String
 
 Default: `(empty String)`
 
-minDate is a Date object for iOS and a millisecond precision unix timestamp for Android, so you need to account for that when using the plugin. Also, on Android, only the date is enforced (time is not).
+minDate is a Date object. On Android, only the date is enforced (time is not).
 
 ### maxDate - iOS, Android, Windows
 Maximum date.
@@ -92,6 +92,8 @@ Maximum date.
 Type: Date | empty String
 
 Default: `(empty String)`
+
+maxDate is a Date object. On Android, only the date is enforced (time is not).
 
 ### titleText - Android
 Label for the dialog title. If empty, uses android default (Set date/Set time).
