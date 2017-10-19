@@ -98,7 +98,13 @@ public class DatePickerPlugin extends CordovaPlugin {
 					public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
 						timePicker = view;
 						timePickerHour = hourOfDay;
-						timePickerMinute = minute;
+						if(theme != 2){
+							int offset = minute%jsonDate.minuteInterval != 0 ? jsonDate.minuteInterval: 0;
+							timePickerMinute = (minute/jsonDate.minuteInterval)*jsonDate.minuteInterval + offset;
+							updateTimeClock(timePickerHour, timePickerMinute);
+						} else {
+							timePickerMinute = minute;
+						}
 					}
 				};
 				if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {

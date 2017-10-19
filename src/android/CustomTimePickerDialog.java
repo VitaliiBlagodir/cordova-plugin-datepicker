@@ -16,6 +16,7 @@ public class CustomTimePickerDialog extends TimePickerDialog {
     final OnTimeSetListener mCallback;
     TimePicker mTimePicker;
     final int increment;
+    final int theme;
     private int minHour = 0;
     private int maxHour = 24;
     private int minMinute = 0;
@@ -46,14 +47,16 @@ public class CustomTimePickerDialog extends TimePickerDialog {
         super(context, theme, callBack, hourOfDay, minute/increment, is24HourView);
         this.mCallback = callBack;
         this.increment = increment;
+        this.theme = theme;
     }
 
     @Override
     public void onClick(DialogInterface dialog, int which) {
         if (mCallback != null && mTimePicker!=null) {
             mTimePicker.clearFocus();
+            int minutes = theme != 2 ? mTimePicker.getCurrentMinute(): mTimePicker.getCurrentMinute()*increment;
             mCallback.onTimeSet(mTimePicker, mTimePicker.getCurrentHour(),
-                    mTimePicker.getCurrentMinute()*increment);
+                    minutes);
         }
     }
 
@@ -61,6 +64,14 @@ public class CustomTimePickerDialog extends TimePickerDialog {
     public void updateTime(int hourOfDay, int minuteOfHour) {
         mTimePicker.setCurrentHour(hourOfDay);
         mTimePicker.setCurrentMinute((minuteOfHour-minMinute)/increment);
+    }
+
+    public void updateTimeClock(int hourOfDay, int minuteOfHour) {
+        if(minuteOfHour == maxMinute){
+            minuteOfHour = 0;
+        }
+        mTimePicker.setCurrentHour(hourOfDay);
+        mTimePicker.setCurrentMinute(minuteOfHour);
     }
 
     @Override
