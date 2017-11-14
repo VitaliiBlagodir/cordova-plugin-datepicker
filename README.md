@@ -66,7 +66,7 @@ The mode of the date picker.
 
 Type: String
 
-Values: `date` | `time` | `datetime` (iOS, Windows only)
+Values: `date` | `time` | `datetime` (iOS, Windows only) | `duration` (iOS only)
 
 Default: `date`
 
@@ -212,6 +212,13 @@ Interval between options in the minute section of the date picker.
 Type: Integer
 
 Default: `1`
+
+### countDownDuration - iOS
+Represents the displayed duration in seconds.
+
+Type: Integer
+
+Default: `0`
 
 ### popoverArrowDirection - iOS
 Force the UIPopoverArrowDirection enum.
