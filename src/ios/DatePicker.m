@@ -250,6 +250,7 @@
   }
   else if ([mode isEqualToString:@"time"]) {
     self.datePicker.datePickerMode = UIDatePickerModeTime;
+  }
   else if ([mode isEqualToString:@"duration"]) {
     self.datePicker.datePickerMode = UIDatePickerModeCountDownTimer;
   } else {
