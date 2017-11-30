@@ -66,7 +66,7 @@ The mode of the date picker.
 
 Type: String
 
-Values: `date` | `time` | `datetime` (iOS, Windows only) | `duration` (iOS only)
+Values: `date` | `time` | `datetime` (iOS, Windows only) | `duration` (iOS, Android only)
 
 Default: `date`
 

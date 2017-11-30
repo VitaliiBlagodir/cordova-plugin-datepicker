@@ -40,6 +40,7 @@ public class DatePickerPlugin extends CordovaPlugin {
 
 	private static final String ACTION_DATE = "date";
 	private static final String ACTION_TIME = "time";
+	private static final String ACTION_DURATION = "duration";
 	private static final String RESULT_ERROR = "error";
 	private static final String RESULT_CANCEL = "cancel";
 	private final String pluginName = "DatePickerPlugin";
@@ -71,7 +72,8 @@ public class DatePickerPlugin extends CordovaPlugin {
 		JSONObject options = data.optJSONObject(0);
 		int theme = options.optInt("androidTheme", 1);
 
-		if (ACTION_TIME.equalsIgnoreCase(jsonDate.action)) {
+		if (ACTION_TIME.equalsIgnoreCase(jsonDate.action) ||
+						ACTION_DURATION.equalsIgnoreCase(jsonDate.action)) {
 			runnable = runnableTimeDialog(datePickerPlugin, theme, currentCtx,
 					callbackContext, jsonDate, Calendar.getInstance(TimeZone.getDefault()));
 
@@ -146,7 +148,8 @@ public class DatePickerPlugin extends CordovaPlugin {
 				calendarDate.set(Calendar.SECOND, 0);
 				calendarDate.set(Calendar.MILLISECOND, 0);
 
-				if (todayDate.getTime().compareTo(calendarDate.getTime()) == 0)
+				if (todayDate.getTime().compareTo(calendarDate.getTime()) == 0 &&
+								!ACTION_DURATION.equalsIgnoreCase(jsonDate.action))
 				{
 					timeDialog.setMinHour(calendarDate.get(Calendar.HOUR_OF_DAY));
 				} else {
