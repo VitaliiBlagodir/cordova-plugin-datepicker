@@ -216,6 +216,8 @@
   NSString *maxDateString = [options objectForKey:@"maxDate"];
   NSString *minuteIntervalString = [options objectForKey:@"minuteInterval"];
   NSInteger minuteInterval = [minuteIntervalString integerValue];
+  NSString *countDownDurationString = [options objectForKey:@"countDownDuration"];
+  NSInteger countDownDuration = [countDownDurationString integerValue];
   NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:[options objectForKey:@"locale"]];
 
   
@@ -248,12 +250,19 @@
   }
   else if ([mode isEqualToString:@"time"]) {
     self.datePicker.datePickerMode = UIDatePickerModeTime;
+  }
+  else if ([mode isEqualToString:@"duration"]) {
+    self.datePicker.datePickerMode = UIDatePickerModeCountDownTimer;
   } else {
     self.datePicker.datePickerMode = UIDatePickerModeDateAndTime;
   }
 
   if (minuteInterval) {
     self.datePicker.minuteInterval = minuteInterval;
+  }
+
+  if (countDownDuration) {
+    self.datePicker.countDownDuration = countDownDuration;
   }
 
   if (locale) {

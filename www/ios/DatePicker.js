@@ -92,6 +92,7 @@ DatePicker.prototype.show = function(options, cb) {
         x: '0',
         y: '0',
         minuteInterval: 1,
+        countDownDuration: 0,
         popoverArrowDirection: this._popoverArrowDirectionIntegerFromString("any"),
         locale: "en_US"
     };
