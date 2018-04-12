@@ -117,8 +117,8 @@ DatePicker.prototype._dateSelected = function(date) {
 };
 
 DatePicker.prototype._dateSelectionCanceled = function() {
-    if (this._callback)
-        this._callback();
+//     if (this._callback)
+//         this._callback();
 };
 
 DatePicker.prototype._UIPopoverArrowDirection = {
