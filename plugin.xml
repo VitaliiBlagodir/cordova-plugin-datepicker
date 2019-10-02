@@ -38,6 +38,10 @@
         </feature>
         </config-file>
 
+        <config-file target="*-Info.plist" parent="UIUserInterfaceStyle">
+            <string>Light</string>
+        </config-file>
+
         <js-module src="www/ios/DatePicker.js" name="DatePicker">
             <clobbers target="datePicker" />
         </js-module>
