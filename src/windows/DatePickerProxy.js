@@ -190,7 +190,7 @@ module.exports = {
                         datePickerSelect.id = "winjsdatepickerYear";
                         descriptionElement.textContent = "year";
 
-                        for (var y=1970; y<=2050; y++) {
+                        for (var y=options.minDate.getFullYear(); y<=options.maxDate.getFullYear(); y++) {
                             var option = document.createElement("option");
                             option.textContent = y;
                             option.value = y;
