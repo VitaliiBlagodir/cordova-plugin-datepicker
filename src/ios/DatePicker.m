@@ -44,10 +44,18 @@
 }
 
 - (BOOL)showForPhone:(NSMutableDictionary *)options {
-  if(!self.datePickerContainer){
-    [[NSBundle mainBundle] loadNibNamed:@"DatePicker" owner:self options:nil];
+  if (@available(iOS 13.0, *)) {
+    NSString *theme = [options objectForKey:@"theme"];
+
+    if ([theme isEqualToString:@"dark"] ) {
+      [[NSBundle mainBundle] loadNibNamed:@"DatePickerDark" owner:self options:nil];
+      self.datePickerContainer.overrideUserInterfaceStyle = UIUserInterfaceStyleDark;
+    } else {
+      [[NSBundle mainBundle] loadNibNamed:@"DatePicker" owner:self options:nil];
+      self.datePickerContainer.overrideUserInterfaceStyle = UIUserInterfaceStyleLight;
+    }
   } else {
-      self.datePickerContainer.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.4];
+    [[NSBundle mainBundle] loadNibNamed:@"DatePicker" owner:self options:nil];
   }
   
   [self updateDatePicker:options];

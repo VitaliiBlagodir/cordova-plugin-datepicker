@@ -45,6 +45,7 @@
         <header-file src="src/ios/DatePicker.h" />
         <source-file src="src/ios/DatePicker.m" />
         <resource-file src="src/ios/DatePicker.xib" />
+        <resource-file src="src/ios/DatePickerDark.xib" />
     </platform>
 	
     <!-- windows -->
