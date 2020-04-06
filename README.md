@@ -146,6 +146,15 @@ Values: `THEME_TRADITIONAL | THEME_HOLO_DARK | THEME_HOLO_LIGHT | THEME_DEVICE_D
 
 Default: `THEME_TRADITIONAL`
 
+### theme - iOS
+Choose the theme of the picker
+
+Type: String
+
+Values: `light | dark`
+
+Default: `light`
+
 ### allowOldDates - iOS
 Shows or hide dates earlier then selected date.
 
