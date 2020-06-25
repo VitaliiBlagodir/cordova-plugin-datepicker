@@ -44,10 +44,13 @@
 }
 
 - (BOOL)showForPhone:(NSMutableDictionary *)options {
+  BOOL addListenerForTraitChange;
   if(!self.datePickerContainer){
     [[NSBundle mainBundle] loadNibNamed:@"DatePicker" owner:self options:nil];
+    addListenerForTraitChange = YES;
   } else {
       self.datePickerContainer.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.4];
+      addListenerForTraitChange = NO;
   }
   
   [self updateDatePicker:options];
@@ -91,12 +94,32 @@
                    animations:^{
     self.datePickerComponentsContainer.frame = frame;
     self.datePickerContainer.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.4];
+    [self adjustDatePickerContainerBg];
 
   } completion:^(BOOL finished) {
-    
+
+    if (addListenerForTraitChange) {
+      // Without the check, it would add the observer for every single show command
+      [[NSNotificationCenter defaultCenter] addObserver:self
+                                            selector:@selector(applicationEnteredForeground:)
+                                            name:UIApplicationDidBecomeActiveNotification
+                                            object:nil];
+    }
   }];
   
   return true;
+}
+
+- (void)applicationEnteredForeground:(NSNotification *)notification {
+  [self adjustDatePickerContainerBg];
+}
+
+-(void) adjustDatePickerContainerBg {
+  if (self.viewController.traitCollection.userInterfaceStyle == UIUserInterfaceStyleDark) {
+    self.datePickerComponentsContainer.subviews[0].backgroundColor = [[UIColor darkGrayColor] colorWithAlphaComponent:1];
+  } else {
+    self.datePickerComponentsContainer.subviews[0].backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:1];
+  }
 }
 
 - (BOOL)showForPad:(NSMutableDictionary *)options {
