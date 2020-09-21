@@ -217,6 +217,7 @@
   NSString *minuteIntervalString = [options objectForKey:@"minuteInterval"];
   NSInteger minuteInterval = [minuteIntervalString integerValue];
   NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:[options objectForKey:@"locale"]];
+  NSString *styleString = [options objectForKey:@"style"];
 
   
   if (allowOldDates) {
@@ -258,6 +259,20 @@
 
   if (locale) {
     [self.datePicker setLocale:locale];
+  }
+  
+  // pereferredDatePickerStyle property as per iOS14 update, for the old style use UIDatePickerStyleWheels
+  if ([styleString isEqualToString:@"automatic"]) {
+    self.datePicker.preferredDatePickerStyle = UIDatePickerStyleAutomatic;
+  }
+  else if ([styleString isEqualToString:@"compact"]) {
+    self.datePicker.preferredDatePickerStyle = UIDatePickerStyleCompact;
+  } 
+  else if ([styleString isEqualToString:@"inline"]) {
+    self.datePicker.preferredDatePickerStyle = UIDatePickerStyleInline;
+  }
+  else {
+    self.datePicker.preferredDatePickerStyle = UIDatePickerStyleWheels;
   }
 }
 
