@@ -32,7 +32,6 @@
                                     </date>
                                 </datePicker>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="bottom" secondItem="SUg-U1-bKY" secondAttribute="bottom" constant="18" id="BFv-4x-nTt"/>
                                 <constraint firstAttribute="centerX" secondItem="SUg-U1-bKY" secondAttribute="centerX" id="HX3-eJ-dgx"/>
@@ -41,7 +40,6 @@
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xq4-6B-F5W">
                             <rect key="frame" x="0.0" y="8" width="155" height="46"/>
-                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="46" id="rdQ-Si-ceK"/>
                             </constraints>
@@ -56,7 +54,6 @@
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalCompressionResistancePriority="751" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FEs-Wn-Ur2">
                             <rect key="frame" x="165" y="8" width="155" height="46"/>
-                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                             <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="20" maxY="0.0"/>
                             <state key="normal" title="done button"/>
@@ -65,7 +62,7 @@
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <constraints>
                         <constraint firstItem="FEs-Wn-Ur2" firstAttribute="height" secondItem="xq4-6B-F5W" secondAttribute="height" id="0XS-oZ-CNe"/>
                         <constraint firstAttribute="height" constant="216" id="9uR-69-zFL"/>
