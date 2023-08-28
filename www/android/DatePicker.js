@@ -86,6 +86,8 @@ DatePicker.prototype.show = function(options, cb, errCb) {
 
 var datePicker = new DatePicker();
 module.exports = datePicker;
+var dateRangePicker = new DatePicker();
+//Implmenting the feature for DataRange
 
 // Make plugin work under window.plugins
 if (!window.plugins) {
